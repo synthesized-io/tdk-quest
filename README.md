@@ -1,11 +1,10 @@
-# TDK Quest
+# Synthesized TDK Quest
 
-This is a set of exercises and questions about the TDK data generation and masking tool
+Try to resolve the following problems using Synthesized TDK data generation, subsetting, and masking tools.
 
+## 0. Environment Preparation 🧪
 
-## 0. Zero task
-
-Start the databases. We now have two databases running on ports 6000 and 6001 on your host.
+Start the databases. We now have two databases running on ports `6000` and `6001` on your host.
 
 For the initial task, use your preferred database IDE, client, or CLI to connect to both databases. Determine the number of tables in each database, and the number of rows in the `payment` table in each database.
 
