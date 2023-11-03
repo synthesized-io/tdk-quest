@@ -1,8 +1,8 @@
-# Synthesized TDK Quest
+# Synthesized TDK Quest📽️
 
 Try to resolve the following problems using Synthesized TDK data generation, subsetting, and masking tools.
 
-## 0. Environment Preparation 🧪
+## 0. Environment Preparation 👋🧪
 
 Start the databases. We now have two databases running on ports `6000` and `6001` on your host.
 
@@ -10,11 +10,11 @@ For the initial task, use your preferred database IDE, client, or CLI to connect
 
 ## 1. Introduction 👋📽️
 
-The [Pagila](https://github.com/devrimgunduz/pagila) sample database is a publicly available, educational database for PostgreSQL. It's based on the DVD rental store model and contains various tables such as films, customers, payments, and more, allowing users to practice complex queries and database management tasks.
+As the development team leader in your software development company, you'll be involved in all stages of the software application life cycle. This includes development, maintenance, and scaling of a comprehensive, modern online marketplace with a broad network of pickup points.
 
 ## 2. Spin up test environment 👥0️⃣
 
-Your team is in the final stages of developing a new application designed to manage a DVD rental network. While the application has been completed, its database currently contains minimal data, only a few rows with John and Jane Doe. This scarcity of data complicates acceptance and load testing prior to production implementation. Therefore, you've been tasked with generating sufficient realistic data from scratch for testing purposes and to demonstrate the application to the customer. The detailed requirements are as follows:
+Your team is in the final stages of developing a new online marketplace. While the application has been completed, its database currently contains minimal data, only a few rows with John and Jane Doe. This scarcity of data complicates acceptance and load testing prior to production implementation. Therefore, you've been tasked with generating sufficient realistic data from scratch for testing purposes and to demonstrate the application to the customer. The detailed requirements are as follows:
 
 - Generate 100 rows for reference tables
 - Generate 10,000 rows for other tables
@@ -22,7 +22,7 @@ Your team is in the final stages of developing a new application designed to man
 
 ## 3. Make test environment with production data 🏗️💽
 
-Our application has been successfully launched and is functioning effectively. Every week, new films featuring renowned actors are released. Thousands of DVDs for these films are produced and shipped to hundreds of stores, where they are rented out daily by customers for evening entertainment. All of this information is stored as countless rows in database tables.
+Our application has been successfully launched and is functioning effectively. Every week, new films featuring renowned actors are released. Thousands of goods related to these films are produced and shipped to hundreds of stores, where they are rented out daily by customers for evening entertainment. All of this information is stored as countless rows in database tables.
 
 Given that the development team only has access to a test database with test data and not the real data from the production database, the bug fixing process becomes quite inconvenient and ineffective. For instance, if the team fixes a specific bug or optimizes performance in the test environment, there's no guarantee it will work the same way in the production environment.
 
@@ -36,7 +36,7 @@ You have been designated as the person responsible for completing this task usin
 
 ## 4. **Waiting for Black Friday** 🎬🎁🖤
 
-The sales team wants to highlight that during Black Friday, in a month's time, we'll announce up to 80% discounts on DVD rentals. This is expected to double our customer base and quintuple our sales. As a result, we will have to increase our staff by 20%. As the head of the development team, it's your responsibility to ensure the application can handle this increased load. If necessary, make the required optimizations to accommodate the anticipated traffic. The detailed requirements are as follows:
+The sales team wants to highlight that during Black Friday, in a month's time, we'll announce up to 80% discounts. This is expected to double our customer base and quintuple our sales. As a result, we will have to increase our staff by 20%. As the head of the development team, it's your responsibility to ensure the application can handle this increased load. If necessary, make the required optimizations to accommodate the anticipated traffic. The detailed requirements are as follows:
 
 - Use global KEEP mode to copy all data from the production database to the test database.
 - Double the customer count by generating new customers.
