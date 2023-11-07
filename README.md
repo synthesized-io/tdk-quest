@@ -21,9 +21,9 @@ Use your preferred database IDE, client, or CLI to connect to both databases. De
 
 The current TDK configuration (`config_generation_from_scratch.tdk.yaml`) already supports the following features:
 
-- Generates 1000 rows for all other tables
+- Generates 1000 rows for all tables
 - Generates 10,000 rows for the `staff` table
-- Generate realistic values for the columns `first_name`, `last_name`, `email`, `username` for the `staff` table
+- Generate realistic values for the columns `first_name`, `last_name`, `email` and `username` for the `staff` table
 
 Run TDK using this configuration and inspect the output database:
 
@@ -35,10 +35,24 @@ docker-compose down && docker-compose run tdk
 For now, you need to enhance this scenario as follows:
 
 - Generate 100 rows for reference tables (such as `country`, `city`, `category` and so on)
-- Generate 10,000 rows for other tables (such as `rental`, `payment` and so on)
-- Ensure that realistic data is generated for names and addresses
+- Generate 10,000 rows for all other tables (such as `rental`, `payment` and so on)
+- Ensure that realistic data is generated for the columns `first_name`, `last_name` and `email` for the `customer` table
 
-Update the configuration file and rerun the TDK with tests. If everything is correct, you will see green text indicating successful tests. If not, correct the configuration file and try again.
+You can run tests that cover new requirements:
+
+```bash
+docker-compose run check scan -d output_db \
+    -c /sodacl/configuration.yaml \
+    /sodacl/checks_for_generation_from_scratch.yaml
+```
+
+Ensure that there are 14 failed tests that need to be fixed (this can be found in the last line of the output log):
+
+```bash
+[13:32:39] Oops! 14 failures. 0 warnings. 0 errors. 2 pass.
+```
+
+Update the TDK configuration file and rerun the TDK with tests. If everything is correct, you will see text indicating successful tests. If not, correct the configuration file and try again.
 
 ## 2. Make test environment with production data 🏗️💽
 
