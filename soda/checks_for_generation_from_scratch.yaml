@@ -1,9 +1,3 @@
-checks for actor:
-  - row_count = 10000
-
-checks for address:
-  - row_count = 10000
-
 checks for category:
   - row_count = 100
 
@@ -13,22 +7,31 @@ checks for city:
 checks for country:
   - row_count = 100
 
-checks for film_actor:
-  - row_count = 10000
-
 checks for film_category:
   - row_count = 100
 
-checks for inventory:
-  - row_count = 10000
-
 checks for language:
   - row_count = 100
+
+checks for actor:
+  - row_count = 10000
+
+checks for address:
+  - row_count = 10000
+
+checks for film_actor:
+  - row_count = 10000
+
+checks for inventory:
+  - row_count = 10000
 
 checks for payment:
   - row_count = 10000
 
 checks for rental:
+  - row_count = 10000
+
+checks for store:
   - row_count = 10000
 
 checks for staff:
@@ -40,6 +43,3 @@ checks for customer:
   - row_count = 10000
   - invalid_percent(email) = 0:
       valid format: email
-
-checks for store:
-  - row_count = 10000
