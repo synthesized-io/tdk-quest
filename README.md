@@ -10,6 +10,11 @@ So, your team is in the final stages of developing the new online marketplace. W
 
 Work has already begun, and your task is to enhance the current process.
 
+Clone the repo with practicies:
+```bash
+git clone https://github.com/synthesized-io/tdk-quest
+```
+
 Start the databases:
 
 ```bash
