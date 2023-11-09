@@ -41,7 +41,12 @@ docker-compose down && docker-compose run tdk
 
 For now, you need to enhance this scenario as follows:
 
-- Generate 100 rows for reference tables (such as `country`, `city`, `category`, `film_category`, `language`)
+- Generate 100 rows for reference tables, including:
+  - `country`
+  - `city`
+  - `category`
+  - `film_category`
+  - `language`
 - Generate 10,000 rows for all other tables
 - Ensure that realistic data is generated for the columns `first_name`, `last_name` and `email` for the `customer` table
 
