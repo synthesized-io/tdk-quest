@@ -14,6 +14,7 @@ Clone the repo with practicies:
 ```bash
 git clone https://github.com/synthesized-io/tdk-quest.git
 cd tdk-quest
+git checkout init
 ```
 
 Start the databases:
