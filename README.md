@@ -12,7 +12,8 @@ Work has already begun, and your task is to enhance the current process.
 
 Clone the repo with practicies:
 ```bash
-git clone https://github.com/synthesized-io/tdk-quest
+git clone https://github.com/synthesized-io/tdk-quest.git
+cd tdk-quest
 ```
 
 Start the databases:
