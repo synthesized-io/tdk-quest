@@ -1,60 +1,89 @@
 # Synthesized TDK Quest 📽️
 
-Try to resolve the following problems using Synthesized TDK data generation, subsetting, and masking tools.
+Try to resolve the following problems using [Synthesized TDK](https://docs.synthesized.io/tdk/latest/) data generation, subsetting, and masking tools.
 
-As the team leader in your software development company, you'll be involved in all stages of the software application life cycle. This includes development, maintenance, and scaling of a comprehensive, modern online marketplace with a broad network of pickup points.
+As the team leader in your software development company, you'll be involved in all stages of the software application life cycle. This involves the development, maintenance, and scaling of a comprehensive, modern online marketplace with an extensive network of pickup points worldwide.
+
+## Technical requirements
+
+Before starting the quest, we must ensure that you have some necessary tools on your PC:
+
+- Command-line terminal such as `Powershell`, `GitBash`, or `CMD` for Windows, or your preferred terminal for Linux or macOS. Open your terminal and enter the command, replacing the `[YOUR_USERNAME]` placeholder with your name:
+    
+    ```bash
+    echo Hello [YOUR_USERNAME]!
+    ```
+    
+- Docker, minimum version 20.10 with Docker Compose plugin. Type in your terminal this command for showing version and existing `docker compose` command:
+    
+    ```bash
+    docker --version
+    docker compose version
+    ```
+    
+- Git client, type in your terminal:
+    
+    ```bash
+    git version
+    ```
+
+Consequently, you should end up with something like this:
+
+![check-tools-version](./images/check-tools-version.gif)
+
+Moreover, you'll need a code editor (such as VS Code) and a database client (such as [DBeaver](https://dbeaver.io/download/), [psql](https://www.postgresql.org/docs/current/app-psql.html), [DataGrip](https://www.jetbrains.com/datagrip/) etc) to connect to the test Postgres databases, navigate through the database schema, and execute simple SQL queries.
 
 ## 1. Spin up test environment 0️⃣🧪
 
-So, your team is in the final stages of developing the new online marketplace. While the application has been completed, its database currently contains minimal data, only a few rows with John and Jane Doe made by developers. This scarcity of data complicates acceptance and load testing and demonstrating the application to the customers and investors prior to production implementation. Therefore, you've been tasked with generating sufficient realistic data using TDK generation mode.
+So, your team is in the final stages of developing the new online marketplace. While the application is complete, its PostgreSQL database is currently devoid of data. This scarcity of data complicates acceptance and load testing and demonstrating the application to the customers and investors prior to production implementation. Therefore, you've been tasked with generating sufficient realistic data using [TDK generation mode](https://docs.synthesized.io/tdk/latest/user_guide/tutorial/generation).
 
-Work has already begun, and your task is to enhance the current process.
+Work has already begun, and your task is to enhance the current process and scenarios.
 
-Clone the repo with practicies:
+Clone the repository with practices from GitHub:
+
 ```bash
 git clone https://github.com/synthesized-io/tdk-quest.git
 cd tdk-quest
 git checkout init
 ```
 
-Start the databases:
+Now we need two databases. The first is provided by your development team; it contains the schema of the online marketplace but no data. The second is an entirely empty database, devoid of both schema and data. This database will be used to generate fake, realistic data for the testing and management team. To retrieve both databases on your PC, you can run this simple Docker command:
 
 ```bash
 docker-compose run databases
 ```
 
-We now have two databases running on ports `6000` and `6001` on your host.
-Use your preferred database IDE, client, or CLI to connect to both databases. Determine the number of tables in each database, and the number of rows in the `customer` table in each database.
+After the command is completed, a whale will appear in your console. This indicates that you have two databases running on ports `6000` (a database with schema only, will call it the `source database`) and `6001` (an entirely empty database for our exercises, will call it the `target database`) on your `localhost`.
 
-The current TDK configuration (`config_generation_from_scratch.tdk.yaml`) already supports the following features:
+Connect to both databases using your preferred database client. Use `postgres` as the `username` and `password` for both. Determine the number of tables in each database and count the number of rows in the `customer` table for each.
 
-- Generates 1000 rows for all tables
-- Generates 10,000 rows for the `staff` table
-- Generate realistic values for the columns `first_name`, `last_name`, `email` and `username` for the `staff` table
+The existing TDK configuration file (`config_generation_from_scratch.tdk.yaml`) can already generate one fake row for each table, which includes realistic values for the columns `first_name`, `last_name`, `email`, and `username` in the `staff` table, for demonstration purposes.
 
-Run TDK using this configuration and inspect the output database:
+To proceed, run the TDK transformation process using this configuration file:
 
 ```bash
 export CONFIG_FILE=config_generation_from_scratch.tdk.yaml
 docker-compose down && docker-compose run tdk
 ```
 
-For now, you need to enhance this scenario as follows:
+Once the TDK transformation is complete, connect to the output database using your database client. Verify that the schema from the source database has been copied and that there is one row in each table. You can confirm this by checking the row count in two or three randomly selected tables. Additionally, connect to the source database to ensure that it remains unchanged. Confirm that two or three randomly selected tables still have no rows.
+
+For now, you need to enhance this data generation scenario as follows:
 
 - Generate 100 rows for reference tables, including:
-  - `country`
-  - `city`
-  - `category`
-  - `film_category`
-  - `language`
+    - `country`
+    - `city`
+    - `category`
+    - `film_category`
+    - `language`
 - Generate 10,000 rows for all other tables
 - Ensure that realistic data is generated for the columns `first_name`, `last_name` and `email` for the `customer` table
 
 You can run tests that cover new requirements:
 
 ```bash
-docker-compose run check scan -d output_db \
-    -c /sodacl/configuration.yaml \
+docker-compose run check scan -d output_db \\
+    -c /sodacl/configuration.yaml \\
     /sodacl/checks_for_generation_from_scratch.yaml
 ```
 

@@ -1,12 +1,12 @@
 default_config:
   mode: GENERATION
-  target_row_number: 1000
+  target_row_number: 1
 
 
 tables:
 
   - table_name_with_schema: "public.staff"
-    target_row_number: 10000
+    target_row_number: 1
     transformations:
       - columns: ["first_name", "last_name", "email", "username"]
         params:
