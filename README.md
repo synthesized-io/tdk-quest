@@ -26,10 +26,11 @@ Before starting the quest, we must ensure that you have some necessary tools on 
     ```bash
     git version
     ```
+    
 
 Consequently, you should end up with something like this:
 
-![check-tools-version](./images/check-tools-version.gif)
+![check-tools-version.gif](https://prod-files-secure.s3.us-west-2.amazonaws.com/41f25c80-3b66-44f9-9def-2ee0d53e03b8/c47f6bac-a3ba-4585-a52d-04be97a1b90d/check-tools-version.gif)
 
 Moreover, you'll need a code editor (such as VS Code) and a database client (such as [DBeaver](https://dbeaver.io/download/), [psql](https://www.postgresql.org/docs/current/app-psql.html), [DataGrip](https://www.jetbrains.com/datagrip/) etc) to connect to the test Postgres databases, navigate through the database schema, and execute simple SQL queries.
 
@@ -50,10 +51,36 @@ git checkout init
 Now we need two databases. The first is provided by your development team; it contains the schema of the online marketplace but no data. The second is an entirely empty database, devoid of both schema and data. This database will be used to generate fake, realistic data for the testing and management team. To retrieve both databases on your PC, you can run this simple Docker command:
 
 ```bash
-docker-compose run databases
+docker compose run databases
 ```
 
-After the command is completed, a whale will appear in your console. This indicates that you have two databases running on ports `6000` (a database with schema only, will call it the `source database`) and `6001` (an entirely empty database for our exercises, will call it the `target database`) on your `localhost`.
+After the command is completed, a whale will appear in your console:
+
+```bash
+$ docker-compose run databases
+[+] Building 0.0s (0/0)                                                                               docker:default
+[+] Creating 2/0
+ ✔ Container input_db   Running                                                                                 0.0s
+ ✔ Container output_db  Running                                                                                 0.0s
+[+] Building 0.0s (0/0)                                                                               docker:default
+ ______________________________________
+/ Both databases have been started and \
+\ are ready for TDK exercises!         /
+ --------------------------------------
+    \
+     \
+      \
+                    ##        .
+              ## ## ##       ==
+           ## ## ## ##      ===
+       /""""""""""""""""___/ ===
+  ~~~ {~~ ~~~~ ~~~ ~~~~ ~~ ~ /  ===- ~~~
+       \______ o          __/
+        \    \        __/
+          \____\______/
+```
+
+This indicates that you have two databases running on ports `6000` (a database with schema only, will call it the `source database`) and `6001` (an entirely empty database for our exercises, will call it the `target database`) on your `localhost`.
 
 Connect to both databases using your preferred database client. Use `postgres` as the `username` and `password` for both. Determine the number of tables in each database and count the number of rows in the `customer` table for each.
 
@@ -63,12 +90,12 @@ To proceed, run the TDK transformation process using this configuration file:
 
 ```bash
 export CONFIG_FILE=config_generation_from_scratch.tdk.yaml
-docker-compose down && docker-compose run tdk
+docker compose down && docker-compose run tdk
 ```
 
 Once the TDK transformation is complete, connect to the output database using your database client. Verify that the schema from the source database has been copied and that there is one row in each table. You can confirm this by checking the row count in two or three randomly selected tables. Additionally, connect to the source database to ensure that it remains unchanged. Confirm that two or three randomly selected tables still have no rows.
 
-For now, you need to enhance this data generation scenario as follows:
+At this point, you should edit the TDK configuration file (`config_generation_from_scratch.tdk.yaml`) using your preferred code editor to improve this data generation scenario as outlined below:
 
 - Generate 100 rows for reference tables, including:
     - `country`
@@ -79,52 +106,47 @@ For now, you need to enhance this data generation scenario as follows:
 - Generate 10,000 rows for all other tables
 - Ensure that realistic data is generated for the columns `first_name`, `last_name` and `email` for the `customer` table
 
-You can run tests that cover new requirements:
+Run our automate data tests against the target database:
 
 ```bash
-docker-compose run check scan -d output_db \\
-    -c /sodacl/configuration.yaml \\
+docker compose run check scan -d output_db \
+    -c /sodacl/configuration.yaml \
     /sodacl/checks_for_generation_from_scratch.yaml
 ```
 
-Ensure that there are 14 failed tests that need to be fixed (this can be found in the last line of the output log):
+And ensure that we have 14 failures tests (this can be found in the last line of the output log):
 
 ```bash
 [13:32:39] Oops! 14 failures. 0 warnings. 0 errors. 2 pass.
 ```
 
-Update the TDK configuration file and rerun the TDK with tests. If everything is correct, you will see text indicating successful tests. If not, correct the configuration file and try again.
+To meet the requirements and fix our tests (we need 0 failures/warnings/errors and 16 passing tests), use the following resources:
 
-## 2. Make test environment with production data 🏗️💽
+- The current configuration file as a reference
+- The official [Synthesized TDK documentation](https://docs.synthesized.io/tdk/latest/), particularly the [TDK transformations reference](https://docs.synthesized.io/tdk/latest/user_guide/reference/transformations) page
+- The official [Synthesized TDK Demo repositories](https://github.com/synthesized-io/tdk-demo/tree/main/postgres) based on PostgreSQL and [Pagila](https://github.com/devrimgunduz/pagila) sample database
 
-Our application has been successfully launched and is functioning effectively. Every week, new films featuring renowned actors are released. Thousands of goods related to these films are produced and shipped to hundreds of stores, where they are sold and rented out daily by customers. And all of this information is stored as countless rows in database tables.
+After making the necessary changes in the configuration file, restart the TDK transformation:
 
-Given that the development team only has access to a test database with test data and not the real data from the production database, the bug fixing process becomes quite inconvenient and ineffective. For instance, if the team fixes a specific bug or optimizes performance in the test environment, there's no guarantee it will work the same way in the production environment.
+```bash
+export CONFIG_FILE=config_generation_from_scratch.tdk.yaml
+docker compose down && docker-compose run tdk
+```
 
-In a recent team meeting, the decision was made to optimize the bug fixing and performance enhancement process. This includes creating a test database populated with real production data. This means that data from the production database would be replicated in the test database, while sensitive information, such as customer personal details and transaction records, would be anonymized. You have been designated as the person responsible for completing this task using the Synthesized TDK in Masking mode.
+Then, connect to the target database using your database client and verify that the generated data complies with the requirements.
 
-The detailed requirements are as follows:
+To thoroughly examine your generated data in the source database, run tests that cover new requirements again:
 
-- Use global KEEP mode to copy all data from the production database to the test database.
-- Replace all personal customer information (like first names, last names, and emails) and personal staff information (such as first names, last names, emails, usernames, and passwords) with random, fake but realistic values. This means names should resemble real names, and emails should have a valid format. Keep all other customer and staff information unchanged.
-- Replace all addresses in the `address` and `address2` columns of the related reference with fake yet realistic addresses, making sure to preserve the existing format.
+```bash
+docker compose run check scan -d output_db \
+    -c /sodacl/configuration.yaml \
+    /sodacl/checks_for_generation_from_scratch.yaml
+```
 
-## 3. **Waiting for Black Friday** 🎬🎁🖤
+If everything is correct, you will see text indicating successful tests:
 
-The sales team wants to highlight that during Black Friday, in a month's time, we'll announce up to 80% discounts. This is expected to double our customer base and quintuple our sales. As a result, we will have to increase our staff by 20%. As the head of the development team, it's your responsibility to ensure the application can handle this increased load. If necessary, make the required optimizations to accommodate the anticipated traffic
+```bash
+[11:24:42] All is good. No failures. No warnings. No errors.
+```
 
-The detailed requirements are as follows:
-
-- Use global KEEP mode to copy all data from the production database to the test database.
-- Double the customer count by generating new customers.
-- Increase the staff count by 20% by generating staff.
-- Increase rental transactions (table `rental`) fivefold by generating new transactions.
-
-## 4. Create a slice of data 🔪🎞️🔪
-
-The online store efficiently handles thousands of orders per hour, 24/7. Nevertheless, the data analytics team often runs complex, time-consuming queries that could potentially slow down the store's operations and decrease profits. As a solution, it was decided to upload completed orders for the week into a separate database outside the production environment once a week. As the head of the development and operations team, your task is to upload data on all transactions from the last 7 days, once a week, while considering related data from associated tables.
-
-The detailed requirements are as follows:
-
-- Use global KEEP mode to copy all data from the production database to the test database.
-- For the tables `rental` and `payment` copy only transaction by the last 7 days.
+If you still have failing tests, update the TDK configuration file and rerun the TDK transformation and tests until you receive the `All is good` message in your terminal.
