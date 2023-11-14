@@ -92,6 +92,15 @@ export CONFIG_FILE=config_generation_from_scratch.tdk.yaml
 docker compose down && docker-compose run tdk
 ```
 
+<details>
+  <summary>Powershell version</summary>
+
+  ```bash
+  $env:CONFIG_FILE='config_generation_from_scratch.tdk.yaml'
+  docker compose down; docker-compose run tdk
+  ```
+</details>
+
 Once the TDK transformation is complete, connect to the output database using your database client. Verify that the schema from the source database has been copied and that there is one row in each table. You can confirm this by checking the row count in two or three randomly selected tables. Additionally, connect to the source database to ensure that it remains unchanged. Confirm that two or three randomly selected tables still have no rows.
 
 At this point, you should edit the TDK configuration file (`config_generation_from_scratch.tdk.yaml`) using your preferred code editor to improve this data generation scenario as outlined below:
@@ -108,9 +117,7 @@ At this point, you should edit the TDK configuration file (`config_generation_fr
 Run our automate data tests against the target database:
 
 ```bash
-docker compose run check scan -d output_db \
-    -c /sodacl/configuration.yaml \
-    /sodacl/checks_for_generation_from_scratch.yaml
+docker compose run check scan -d output_db -c /sodacl/configuration.yaml /sodacl/checks_for_generation_from_scratch.yaml
 ```
 
 And ensure that we have 15 failures tests (this can be found in the last line of the output log):
@@ -132,14 +139,21 @@ export CONFIG_FILE=config_generation_from_scratch.tdk.yaml
 docker compose down && docker-compose run tdk
 ```
 
+<details>
+  <summary>Powershell version</summary>
+
+  ```bash
+  $env:CONFIG_FILE='config_generation_from_scratch.tdk.yaml'
+  docker compose down; docker-compose run tdk
+  ```
+</details>
+
 Then, connect to the target database using your database client and verify that the generated data complies with the requirements.
 
 To thoroughly examine your generated data in the source database, run tests that cover new requirements again:
 
 ```bash
-docker compose run check scan -d output_db \
-    -c /sodacl/configuration.yaml \
-    /sodacl/checks_for_generation_from_scratch.yaml
+docker compose run check scan -d output_db -c /sodacl/configuration.yaml /sodacl/checks_for_generation_from_scratch.yaml
 ```
 
 If everything is correct, you will see text indicating successful tests:
