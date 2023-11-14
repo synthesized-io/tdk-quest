@@ -95,7 +95,7 @@ docker compose down && docker-compose run tdk
 <details>
   <summary>Powershell version</summary>
 
-  ```bash
+  ```
   $env:CONFIG_FILE='config_generation_from_scratch.tdk.yaml'
   docker compose down; docker-compose run tdk
   ```
@@ -142,7 +142,7 @@ docker compose down && docker-compose run tdk
 <details>
   <summary>Powershell version</summary>
 
-  ```bash
+  ```
   $env:CONFIG_FILE='config_generation_from_scratch.tdk.yaml'
   docker compose down; docker-compose run tdk
   ```
