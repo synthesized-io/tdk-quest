@@ -114,10 +114,10 @@ docker compose run check scan -d output_db \
     /sodacl/checks_for_generation_from_scratch.yaml
 ```
 
-And ensure that we have 14 failures tests (this can be found in the last line of the output log):
+And ensure that we have 15 failures tests (this can be found in the last line of the output log):
 
 ```bash
-[13:32:39] Oops! 14 failures. 0 warnings. 0 errors. 2 pass.
+[11:45:45] Oops! 15 failures. 0 warnings. 0 errors. 1 pass.
 ```
 
 To meet the requirements and fix our tests (we need 0 failures/warnings/errors and 16 passing tests), use the following resources:
