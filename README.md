@@ -26,11 +26,10 @@ Before starting the quest, we must ensure that you have some necessary tools on 
     ```bash
     git version
     ```
-    
 
 Consequently, you should end up with something like this:
 
-![check-tools-version.gif](https://prod-files-secure.s3.us-west-2.amazonaws.com/41f25c80-3b66-44f9-9def-2ee0d53e03b8/c47f6bac-a3ba-4585-a52d-04be97a1b90d/check-tools-version.gif)
+![check-tools-version.gif](images/check-tools-version.gif)
 
 Moreover, you'll need a code editor (such as VS Code) and a database client (such as [DBeaver](https://dbeaver.io/download/), [psql](https://www.postgresql.org/docs/current/app-psql.html), [DataGrip](https://www.jetbrains.com/datagrip/) etc) to connect to the test Postgres databases, navigate through the database schema, and execute simple SQL queries.
 
