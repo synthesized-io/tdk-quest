@@ -44,7 +44,6 @@ Clone the repository with practices from GitHub:
 ```bash
 git clone https://github.com/synthesized-io/tdk-quest.git
 cd tdk-quest
-git checkout init
 ```
 
 Now we need two databases. The first is provided by your development team; it contains the schema of the online marketplace but no data. The second is an entirely empty database, devoid of both schema and data. This database will be used to generate fake, realistic data for the testing and management team. To retrieve both databases on your PC, you can run this simple Docker command:
