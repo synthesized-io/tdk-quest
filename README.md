@@ -8,7 +8,7 @@ As the team leader in your software development company, you'll be involved in a
 
 Before starting the quest, we must ensure that you have some necessary tools on your PC:
 
-- Command-line terminal such as `Powershell`, `GitBash`, or `CMD` for Windows, or your preferred terminal for Linux or macOS. Open your terminal and enter the command, replacing the `[YOUR_USERNAME]` placeholder with your name:
+- Command-line terminal such as `Powershell`, `GitBash`, or `MinGW` for Windows, or your preferred terminal for Linux or macOS. Open your terminal and enter the command, replacing the `[YOUR_USERNAME]` placeholder with your name:
     
     ```bash
     echo Hello [YOUR_USERNAME]!
