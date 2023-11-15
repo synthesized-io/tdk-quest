@@ -88,8 +88,7 @@ The existing TDK configuration file (`config_generation_from_scratch.tdk.yaml`) 
 To proceed, run the TDK transformation process using this configuration file:
 
 ```bash
-export CONFIG_FILE=config_generation_from_scratch.tdk.yaml
-docker compose down && docker-compose run tdk
+docker compose down; docker-compose run tdk
 ```
 
 Once the TDK transformation is complete, connect to the output database using your database client. Verify that the schema from the source database has been copied and that there is one row in each table. You can confirm this by checking the row count in two or three randomly selected tables. Additionally, connect to the source database to ensure that it remains unchanged. Confirm that two or three randomly selected tables still have no rows.
@@ -126,8 +125,7 @@ To meet the requirements and fix our tests (we need 0 failures/warnings/errors a
 After making the necessary changes in the configuration file, restart the TDK transformation:
 
 ```bash
-export CONFIG_FILE=config_generation_from_scratch.tdk.yaml
-docker compose down && docker-compose run tdk
+docker compose down; docker-compose run tdk
 ```
 
 Then, connect to the target database using your database client and verify that the generated data complies with the requirements.

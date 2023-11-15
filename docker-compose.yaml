@@ -90,7 +90,7 @@ services:
         -Dspring.main.banner-mode=CONSOLE
         -Dspring.banner.location=file:/app/banner.txt
     volumes:
-      - ./${CONFIG_FILE}:/app/config.yaml
+      - ./config_generation_from_scratch.tdk.yaml:/app/config.yaml
       - ./banner.txt:/app/banner.txt
       - ./logback-lite-executor.xml:/app/logback-lite-executor.xml
     depends_on:
