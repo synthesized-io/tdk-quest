@@ -1,0 +1,17 @@
+default_config:
+  mode: GENERATION
+  target_row_number: 1
+
+
+tables:
+
+  - table_name_with_schema: "public.staff"
+    target_row_number: 1
+    transformations:
+      - columns: ["first_name", "last_name", "email", "username"]
+        params:
+          type: person_generator
+          column_templates: ["${first_name}", "${last_name}", "${email}", "${first_name}.${last_name}"]
+
+schema_creation_mode: "CREATE_IF_NOT_EXISTS"
+safety_mode: "RELAXED"
