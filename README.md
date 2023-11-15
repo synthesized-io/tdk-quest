@@ -107,7 +107,7 @@ At this point, you should edit the TDK configuration file (`config_generation_fr
 Run our automate data tests against the target database:
 
 ```bash
-docker compose run check scan -d output_db -c /sodacl/configuration.yaml /sodacl/checks_for_generation_from_scratch.yaml
+docker compose run check scan -d output_db -c //sodacl/configuration.yaml //sodacl/checks_for_generation_from_scratch.yaml
 ```
 
 And ensure that we have 15 failures tests (this can be found in the last line of the output log):
@@ -133,7 +133,7 @@ Then, connect to the target database using your database client and verify that 
 To thoroughly examine your generated data in the source database, run tests that cover new requirements again:
 
 ```bash
-docker compose run check scan -d output_db -c /sodacl/configuration.yaml /sodacl/checks_for_generation_from_scratch.yaml
+docker compose run check scan -d output_db -c //sodacl/configuration.yaml //sodacl/checks_for_generation_from_scratch.yaml
 ```
 
 If everything is correct, you will see text indicating successful tests:
