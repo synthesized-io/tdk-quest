@@ -58,7 +58,7 @@ services:
     image: docker/whalesay
     command: >
       cowsay
-        "Both databases have been started and are ready for TDK exercises!"
+        "Both databases have been started and are ready for Synthesized TDK exercises!"
     depends_on:
       input_db:
         condition: service_healthy
