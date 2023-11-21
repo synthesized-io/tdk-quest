@@ -38,16 +38,16 @@ ALTER DOMAIN public."bıgınt" OWNER TO postgres;
 -- Name: mpaa_rating; Type: TYPE; Schema: public; Owner: postgres
 --
 
-CREATE TYPE public.mpaa_rating AS ENUM (
-    'G',
-    'PG',
-    'PG-13',
-    'R',
-    'NC-17'
-);
+-- CREATE TYPE public.mpaa_rating AS ENUM (
+--     'G',
+--     'PG',
+--     'PG-13',
+--     'R',
+--     'NC-17'
+-- );
 
 
-ALTER TYPE public.mpaa_rating OWNER TO postgres;
+-- ALTER TYPE public.mpaa_rating OWNER TO postgres;
 
 --
 -- Name: year; Type: DOMAIN; Schema: public; Owner: postgres
@@ -438,17 +438,20 @@ CREATE TABLE public.film (
     film_id integer DEFAULT nextval('public.film_film_id_seq'::regclass) NOT NULL,
     title text NOT NULL,
     description text,
-    release_year public.year,
+    -- release_year public.year,
+    release_year integer,
     language_id integer NOT NULL,
     original_language_id integer,
     rental_duration smallint DEFAULT 3 NOT NULL,
     rental_rate numeric(4,2) DEFAULT 4.99 NOT NULL,
     length smallint,
     replacement_cost numeric(5,2) DEFAULT 19.99 NOT NULL,
-    rating public.mpaa_rating DEFAULT 'G'::public.mpaa_rating,
+    -- rating public.mpaa_rating DEFAULT 'G'::public.mpaa_rating,
+    rating text DEFAULT 'G',
     last_update timestamp with time zone DEFAULT now() NOT NULL,
     special_features text[],
-    fulltext tsvector NOT NULL
+    -- fulltext tsvector NOT NULL
+    fulltext text NOT NULL
 );
 
 
@@ -1200,7 +1203,7 @@ ALTER TABLE ONLY public.store
 -- Name: film_fulltext_idx; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX film_fulltext_idx ON public.film USING gist (fulltext);
+-- CREATE INDEX film_fulltext_idx ON public.film USING gist (fulltext);
 
 
 --

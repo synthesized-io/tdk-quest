@@ -24,8 +24,6 @@ services:
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
-    volumes:
-      - ./pagila-output-db-scripts.sql:/docker-entrypoint-initdb.d/1.sql
     ports: [ "6001:5432" ]
     healthcheck:
       test: "pg_isready -d postgres -q -U ${POSTGRES_USER:-postgres}"
