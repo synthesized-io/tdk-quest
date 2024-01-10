@@ -91,7 +91,7 @@ The existing Synthesized TDK configuration file (`config_generation_from_scratch
 To proceed, run the Synthesized TDK transformation process using this configuration file:
 
 ```bash
-docker compose down; docker compose run tdk
+docker compose run tdk
 ```
 
 Once the Synthesized TDK transformation is complete, connect to the output database using your database client. Verify that the schema from the source database has been copied and that there is one row in each table. You can confirm this by checking the row count in two or three randomly selected tables. Additionally, connect to the source database to ensure that it remains unchanged. Confirm that two or three randomly selected tables still have no rows.
