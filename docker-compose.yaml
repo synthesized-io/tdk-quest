@@ -4,7 +4,7 @@ services:
 
   input_db:
     container_name: input_db
-    image: synthesizedio/pagila:1.0
+    image: synthesizedio/pagila:latest
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
@@ -31,30 +31,13 @@ services:
       retries: 30
 
 
-  pgadmin:
-    container_name: pgadmin
-    image: dpage/pgadmin4
-    environment:
-      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
-      PGADMIN_DEFAULT_PASSWORD: postgres
-      PGADMIN_CONFIG_SERVER_MODE: 'False'
-    volumes:
-      - ./pgadmin.json:/pgadmin4/servers.json
-    ports:
-      - "8888:80"
-    depends_on:
-      input_db:
-        condition: service_healthy
-      output_db:
-        condition: service_healthy
-
-
   databases:
     container_name: databases
     image: docker/whalesay
     command: >
       cowsay
-        "Both databases have been started and are ready for Synthesized TDK exercises!"
+        "Both the source and target databases have been started on port 6000 and 6001 respectively, and are ready for TDK exercises!
+         Use the 'postgres' value as a database name, username and password for the both databases."
     depends_on:
       input_db:
         condition: service_healthy
@@ -94,15 +77,10 @@ services:
         condition: service_completed_successfully
 
 
-  tdk_admin:
-    <<: *tdk
-    depends_on:
-      pgadmin:
-        condition: service_started
-
-
-  check:
-    container_name: check
+  check_masking:
+    container_name: check_masking
     image: sodadata/soda-core
+    command: scan -d output_db -c /root/.soda/configuration.yaml /root/.soda/checks.yaml
     volumes:
-      - ./soda:/sodacl
+      - ./soda/checks_for_masking.yaml:/root/.soda/checks.yaml
+      - ./soda/configuration.yaml:/root/.soda/configuration.yaml

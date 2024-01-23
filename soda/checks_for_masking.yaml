@@ -1,0 +1,69 @@
+checks for category:
+  - row_count = 16
+
+checks for film_category:
+  - row_count = 2367
+
+checks for language:
+  - row_count = 6
+
+checks for film_actor:
+  - row_count = 5462
+
+checks for inventory:
+  - row_count = 4581
+
+checks for payment:
+  - row_count = 48147
+
+checks for rental:
+  - row_count = 16044
+
+checks for store:
+  - row_count = 500
+
+checks for address:
+  - row_count = 603
+  - row_count = 1:
+      name: there is an unmasked address - "018 Silas Mountain, New Vinceberg, MA TD6P 9XL"
+      filter: address = '018 Silas Mountain, New Vinceberg, MA TD6P 9XL' and postal_code = 'LH6 2NJ'
+
+checks for actor:
+  - row_count = 200
+  - row_count = 1:
+      name: there is an actor with the real, unmasked name - "PENELOPE GUINESS"
+      filter: first_name = 'PENELOPE' and last_name = 'GUINESS'
+
+checks for customer:
+  - row_count = 599
+  - invalid_count(email) = 0:
+      valid format: email
+  - row_count = 1:
+      name: a customer has a masked first and last name - "BBAY YKQUU"
+      filter: first_name = 'BBAY' and last_name = 'YKQUU'
+
+checks for staff:
+  - row_count = 1500
+  - invalid_count(email) = 0:
+      valid format: email
+  - row_count = 1:
+      name: fake person "Jeffry Parker" is among the staff members
+      filter: first_name = 'Jeffry' and last_name = 'Parker'
+
+checks for film:
+  - row_count = 1000
+  - row_count = 1:
+      name: there is an unmasked film - "CALIFORNIA BIRDS"
+      filter: title = 'CALIFORNIA BIRDS'
+
+checks for country:
+  - row_count = 109
+  - row_count = 1:
+      name: there is an unmasked country - "Argentina"
+      filter: country = 'Argentina'
+
+checks for city:
+  - row_count = 600
+  - row_count = 1:
+      name: there is an unmasked city - "Kimchon"
+      filter: city = 'Kimchon'
