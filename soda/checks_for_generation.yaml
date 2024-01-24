@@ -14,7 +14,7 @@ checks for inventory:
   - row_count = 4581
 
 checks for payment:
-  - row_count = 48147
+  - row_count = 96294
 
 checks for rental:
   - row_count = 16044
@@ -29,12 +29,12 @@ checks for actor:
   - row_count = 200
 
 checks for customer:
-  - row_count = 599
+  - row_count = 2995
   - invalid_count(email) = 0:
       valid format: email
 
 checks for staff:
-  - row_count = 1500
+  - row_count = 1800
   - invalid_count(email) = 0:
       valid format: email
 
