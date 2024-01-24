@@ -2,6 +2,8 @@
 
 In this engaging task, you'll assume the role of an online marketplace development team leader. You'll navigate through the entire application lifecycle, encountering and successfully resolving various challenges.
 
+
+
 ## Your First Working Day 👔
 
 So, you've just taken the lead of the team, and during the first meeting, you're given all the necessary information:
@@ -40,13 +42,14 @@ The next step involves setting up your workspace and ensuring the necessary soft
     
 
 Consequently, you should end up with something like this:
-![check-tools-version.gif](images/check-tools-version.gif)
 
+![check-tools-version.gif](images/check-tools-version.gif)
 
 Additionally, you'll need:
 
 - A preferred code editor for editing configuration files. If you use VS Code or any JetBrains family IDE, we strongly recommend installing the Synthesized TDK plugin for autocomplete suggestions and configuration validation. You can find related information on the "[IDE Setup](https://docs.synthesized.io/tdk/latest/user_guide/getting_started/ide_setup)" page.
 - A database client (such as [DBeaver](https://dbeaver.io/download/), [psql](https://www.postgresql.org/docs/current/app-psql.html), [DataGrip](https://www.jetbrains.com/datagrip/), etc.) to connect to Postgres databases, navigate the database schema, and execute simple SQL queries.
+
 
 
 ## The First Challenge: Ship more features faster 👩‍💻
@@ -74,7 +77,7 @@ In a recent team meeting, the decision was made to optimize the bug fixing and p
 Therefore, you should proceed as follows:
 
 - If you're not yet familiar with Synthesized TDK in general, you should learn about it by visiting the "[What is TDK?](https://docs.synthesized.io/tdk/latest/user_guide/getting_started/what_is_tdk)" page in the official documentation
-- Familiarize yourself with the [TDK Masking mode](https://docs.synthesized.io/tdk/latest/user_guide/tutorial/masking)
+- Familiarize yourself with the [Synthesized TDK Masking mode](https://docs.synthesized.io/tdk/latest/user_guide/tutorial/masking)
 - To acquire auxiliary files and gain access to the necessary databases, type the following commands into your terminal:
     
     ```bash
@@ -122,15 +125,60 @@ Therefore, you should proceed as follows:
 
 ## Challenge 2: Keeping the engineering team chill during Black Friday 🎁😌🌴
 
-The sales team plans to announce up to 80% discounts during Black Friday, which is a month away. This strategy is expected to double our customer base and increase our sales fivefold during this period. Consequently, we will need to expand our staff by 20% to handle the surge in orders.
+The sales team plans to announce up to 80% discounts during Black Friday, which is a month away. This strategy is anticipated to significantly boost our customer base and sales during this period. Consequently, we will need to expand our staff by 20% to handle the surge in orders.
 
 Therefore, it's crucial to ensure that all your systems can successfully handle the anticipated high load, preventing any loss of profits. As the head of the development team, it falls on you to confirm that the marketplace can withstand this increased load and to make any necessary optimizations to accommodate the expected traffic.
 
-TODO (load testing)
+First, generate a realistic volume of data on development and test databases using [Synthesized TDK](https://www.synthesized.io/tdk) and its [Generation mode](https://docs.synthesized.io/tdk/latest/user_guide/tutorial/generation) to begin load testing. The specific requirements include:
 
-Firstly, you need to generate a realistic amount of data on development and test databases using [Synthesized TDK](https://www.synthesized.io/tdk) and its [Generation mode](https://docs.synthesized.io/tdk/latest/user_guide/tutorial/generation). The specific requirements are as follows:
+- If you're not yet familiar with Synthesized TDK in general, you should learn about it by visiting the "[What is TDK?](https://docs.synthesized.io/tdk/latest/user_guide/getting_started/what_is_tdk)" page in the official documentation
+- Familiarize yourself with the [Synthesized TDK Generation mode](https://docs.synthesized.io/tdk/latest/user_guide/tutorial/generation)
+- Use the final configuration file you created in the first challenge as a base, and make changes to meet the following requirements:
+    - Increase the customer count by five times by generating new records for the `customer` table
+    - Double the number of payment transactions by creating new records for the `payment` table
+    - Increase the staff count by 20% by generating new records for the `staff` table
+- After making the necessary changes in the configuration file, start the TDK transformation:
+    
+    ```bash
+    docker compose run tdk
+    ```
+    
+- Then, connect to the output database using your database client and verify that the resulted data complies with the requirements
+- To thoroughly examine your output database, run tests that cover new requirements again:
+    
+    ```bash
+    docker compose run check_generation
+    ```
+    
+- If everything is correct, you will see text indicating successful tests:
+    
+    ```bash
+    [11:24:42] All is good. No failures. No warnings. No errors.
+    ```
+    
+- If you still have failing tests, update the TDK configuration file and rerun the TDK transformation and tests until you receive the `All is good` message in your terminal
 
-- Use global MASKING mode to copy all data from the production database to the test database
-- Double the customer count by generating new records for the `customer` table
-- Increase the staff count by 20% by generating staff new records for the `staff` table
-- Increase payment transactions fivefold by generating new records for the `payment` table
+
+
+## Summing up the results
+
+So, if you've reached this point, it implies that:
+
+- You have successfully completed all assigned tasks
+- Both your team and management are satisfied
+- You've become proficient in the basic functions of Synthesized TDK
+
+We hope that Synthesized TDK will be beneficial in addressing your needs for high-quality, realistic, and secure data for testing and development. We're ready to answer all your questions and provide necessary assistance. Please feel free to email us at [support@synthesized.io](mailto:support@synthesized.io)
+
+Additionally, we recommend joining our social media, where you can find more useful information related to test, fake, synthetic, obfuscated, anonymized, and generated data, among other related topics:
+
+- Our [DataOps community](https://www.synthesized.io/dataops-community) on Slack
+- [Twitter](https://twitter.com/synthesizedio)
+- [Linkedin](https://www.linkedin.com/company/synthesized)
+- [Medium](https://synthesized.medium.com)
+
+And finally, we ask you to take [a little questionnaire](https://docs.google.com/forms/d/e/1FAIpQLSdawUD6p1ld-brgG6vVJPOgGA_-yc4NPJko_rcmFHHIE19O7A/viewform?usp=sharing) that will help us become even better and solve our customers' problems even more effectively.
+
+Thank you for your attention and support. Let's stay in touch.
+
+Synthesized TDK Team
