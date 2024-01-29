@@ -4,12 +4,10 @@ services:
 
   input_db:
     container_name: input_db
-    image: postgres:16
+    image: synthesizedio/pagila:1.1
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
-    volumes:
-      - ./pagila-schema.sql:/docker-entrypoint-initdb.d/1.sql
     ports: [ "6000:5432" ]
     healthcheck:
       test: "pg_isready -d postgres -q -U ${POSTGRES_USER:-postgres}"
@@ -18,14 +16,13 @@ services:
       start_period: "3s"
       retries: 30
 
+
   output_db:
     container_name: output_db
     image: postgres:16
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
-    volumes:
-      - ./pagila-output-db-scripts.sql:/docker-entrypoint-initdb.d/1.sql
     ports: [ "6001:5432" ]
     healthcheck:
       test: "pg_isready -d postgres -q -U ${POSTGRES_USER:-postgres}"
@@ -35,30 +32,13 @@ services:
       retries: 30
 
 
-  pgadmin:
-    container_name: pgadmin
-    image: dpage/pgadmin4
-    environment:
-      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
-      PGADMIN_DEFAULT_PASSWORD: postgres
-      PGADMIN_CONFIG_SERVER_MODE: 'False'
-    volumes:
-      - ./pgadmin.json:/pgadmin4/servers.json
-    ports:
-      - "8888:80"
-    depends_on:
-      input_db:
-        condition: service_healthy
-      output_db:
-        condition: service_healthy
-
-
   databases:
     container_name: databases
     image: docker/whalesay
     command: >
       cowsay
-        "Both databases have been started and are ready for Synthesized TDK exercises!"
+        "Both the source and target databases have been started on port 6000 and 6001 respectively, and are ready for TDK exercises!
+         Use the 'postgres' value as a database name, username and password for the both databases."
     depends_on:
       input_db:
         condition: service_healthy
@@ -66,9 +46,9 @@ services:
         condition: service_healthy
 
 
-  tdk: &tdk
+  tdk:
     container_name: tdk
-    image: synthesizedio/synthesized-tdk-cli:latest
+    image: synthesizedio/synthesized-tdk-cli:v1.40.0
     environment:
       SYNTHESIZED_INPUT_URL: jdbc:postgresql://input_db:5432/postgres
       SYNTHESIZED_INPUT_USERNAME: postgres
@@ -90,7 +70,7 @@ services:
         -Dspring.main.banner-mode=CONSOLE
         -Dspring.banner.location=file:/app/banner.txt
     volumes:
-      - ./config_generation_from_scratch.tdk.yaml:/app/config.yaml
+      - ./${CONFIG_FILE:-config.tdk.yaml}:/app/config.yaml
       - ./banner.txt:/app/banner.txt
       - ./logback-lite-executor.xml:/app/logback-lite-executor.xml
     depends_on:
@@ -98,15 +78,19 @@ services:
         condition: service_completed_successfully
 
 
-  tdk_admin:
-    <<: *tdk
-    depends_on:
-      pgadmin:
-        condition: service_started
-
-
-  check:
-    container_name: check
+  check_masking:
+    container_name: check_masking
     image: sodadata/soda-core
+    command: scan -d output_db -c /root/.soda/configuration.yaml /root/.soda/checks.yaml
     volumes:
-      - ./soda:/sodacl
+      - ./soda/configuration.yaml:/root/.soda/configuration.yaml
+      - ./soda/checks_for_masking.yaml:/root/.soda/checks.yaml
+
+
+  check_generation:
+    container_name: check_generation
+    image: sodadata/soda-core
+    command: scan -d output_db -c /root/.soda/configuration.yaml /root/.soda/checks.yaml
+    volumes:
+      - ./soda/configuration.yaml:/root/.soda/configuration.yaml
+      - ./soda/checks_for_generation.yaml:/root/.soda/checks.yaml

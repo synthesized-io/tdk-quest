@@ -1,0 +1,48 @@
+checks for category:
+  - row_count = 16
+
+checks for film_category:
+  - row_count = 2367
+
+checks for language:
+  - row_count = 6
+
+checks for film_actor:
+  - row_count = 5462
+
+checks for inventory:
+  - row_count = 4581
+
+checks for payment:
+  - row_count = 96294
+
+checks for rental:
+  - row_count = 16044
+
+checks for store:
+  - row_count = 500
+
+checks for address:
+  - row_count = 603
+
+checks for actor:
+  - row_count = 200
+
+checks for customer:
+  - row_count = 2995
+  - invalid_count(email) = 0:
+      valid format: email
+
+checks for staff:
+  - row_count = 1800
+  - invalid_count(email) = 0:
+      valid format: email
+
+checks for film:
+  - row_count = 1000
+
+checks for country:
+  - row_count = 109
+
+checks for city:
+  - row_count = 600
