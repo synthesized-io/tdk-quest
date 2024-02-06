@@ -8,7 +8,7 @@ services:
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
-    ports: [ "6000:5432" ]
+    ports: [ "13600:5432" ]
     healthcheck:
       test: "pg_isready -d postgres -q -U ${POSTGRES_USER:-postgres}"
       interval: "3s"
@@ -23,7 +23,7 @@ services:
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
-    ports: [ "6001:5432" ]
+    ports: [ "13601:5432" ]
     healthcheck:
       test: "pg_isready -d postgres -q -U ${POSTGRES_USER:-postgres}"
       interval: "3s"
@@ -37,7 +37,7 @@ services:
     image: docker/whalesay
     command: >
       cowsay
-        "Both the source and target databases have been started on port 6000 and 6001 respectively, and are ready for TDK exercises!
+        "Both the source and target databases have been started on port 13600 and 13601 respectively, and are ready for TDK exercises!
          Use the 'postgres' value as a database name, username and password for the both databases."
     depends_on:
       input_db:
