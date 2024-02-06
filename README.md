@@ -82,8 +82,8 @@ Therefore, you proceed as follows:
     ```
     
 - Check the database connection settings (using the `postgres` value as a database name, schema name, username and password):
-    - Connect to the production database using your preferred DB client. The database can be accessed from your host (`localhost` or `127.0.0.1`) via port `6000`. Make sure that this database contains a schema of the marketplace and actual data, including customers, staff, payments, and so forth
-    - Connect to the empty database, which we'll refer to as the `output database`, on your server through port `6001`. Make sure that this database doesn't include any schema, database objects, or data. After completing all the steps, this database will be shared with your team's test and development personnel
+    - Connect to the production database using your preferred DB client. The database can be accessed from your host (`localhost` or `127.0.0.1`) via port `13600`. Make sure that this database contains a schema of the marketplace and actual data, including customers, staff, payments, and so forth
+    - Connect to the empty database, which we'll refer to as the `output database`, on your server through port `13601`. Make sure that this database doesn't include any schema, database objects, or data. After completing all the steps, this database will be shared with your team's test and development personnel
 - Open the `config.tdk.yaml` file in your preferred code editor. This file contains a basic Synthesized TDK configuration for masking, or in other words, anonymizing your production database data. Refer to the [documentation](https://docs.synthesized.io/tdk/latest/user_guide/tutorial/masking) learn more about this file
 - Run Synthesized TDK using this configuration file using the following command:
     
