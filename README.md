@@ -40,7 +40,7 @@ As the next step, in order to set up your workspace, please make sure the requir
 
 Once you run those, you should end up with something like this:
 
-![check-tools-version.gif](https://prod-files-secure.s3.us-west-2.amazonaws.com/265b146d-e896-42ff-9be9-7cc3ef184d81/c830c21e-279e-4093-8ecf-54fbc78761b0/check-tools-version.gif)
+![images/check-tools-version.gif](https://prod-files-secure.s3.us-west-2.amazonaws.com/265b146d-e896-42ff-9be9-7cc3ef184d81/c830c21e-279e-4093-8ecf-54fbc78761b0/check-tools-version.gif)
 
 Additionally, you'll need:
 
