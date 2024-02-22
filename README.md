@@ -163,7 +163,6 @@ We hope that Synthesized TDK will be beneficial in addressing your needs for hig
 
 Additionally, we recommend joining our social media, where you can find more useful information related to test, fake, synthetic, obfuscated, anonymized, and generated data, among other related topics:
 
-- Our [DataOps community](https://www.synthesized.io/dataops-community) on Slack
 - [Twitter](https://twitter.com/synthesizedio)
 - [Linkedin](https://www.linkedin.com/company/synthesized)
 - [Medium](https://synthesized.medium.com/)
