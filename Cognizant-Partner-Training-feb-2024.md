@@ -4,13 +4,13 @@ Cognizant Partner Training
 ​
 **[Synthesized Docs](https://docs.synthesized.io)
 ​
-<br> **[Synthesized.io](https://synthesized.io)
+<br> ** [Synthesized.io](https://synthesized.io)
 ​
-**[Demo’s on Github](https://github.com/synthesized-io/tdk-demo)
+<br> ** [Demo’s on Github](https://github.com/synthesized-io/tdk-demo)
 ​
-**Test your knowledge [**>>**](https://docs.google.com/forms/d/e/1FAIpQLSezW13M-ySxp7mDW2EC2a2pw169Jbjnu9TrVOeU7VkDE5DdYg/viewform)
+<br> **Test your knowledge [**>>**](https://docs.google.com/forms/d/e/1FAIpQLSezW13M-ySxp7mDW2EC2a2pw169Jbjnu9TrVOeU7VkDE5DdYg/viewform)
 ​
-**[TDK Quest](https://docs.synthesized.io/tdk-quest/)
+<br> **[TDK Quest](https://docs.synthesized.io/tdk-quest/)
 ​
 ---
 ​
