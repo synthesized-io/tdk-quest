@@ -2,7 +2,7 @@ Cognizant Partner Training
 ​
 ### Helpful resources
 ​
-**[Synthesized Docs](https://docs.synthesized.io)
+** [Synthesized Docs](https://docs.synthesized.io)
 ​
 <br> ** [Synthesized.io](https://synthesized.io)
 ​
