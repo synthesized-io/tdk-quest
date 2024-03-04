@@ -1,6 +1,6 @@
 Cognizant Partner Training
 ​
-###Helpful resources
+### Helpful resources
 ​
 **[Synthesized Docs](https://docs.synthesized.io)
 ​
