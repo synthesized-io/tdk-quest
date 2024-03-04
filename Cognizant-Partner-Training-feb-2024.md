@@ -4,7 +4,7 @@ Cognizant Partner Training
 ​
 **[Synthesized Docs](https://docs.synthesized.io)
 ​
-**[Synthesized.io](https://synthesized.io)
+<br> **[Synthesized.io](https://synthesized.io)
 ​
 **[Demo’s on Github](https://github.com/synthesized-io/tdk-demo)
 ​
