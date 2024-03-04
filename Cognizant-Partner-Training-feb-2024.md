@@ -1,16 +1,16 @@
 Cognizant Partner Training
 ​
-### Helpful resources
+###Helpful resources
 ​
-[Synthesized Docs](https://docs.synthesized.io)
+**[Synthesized Docs](https://docs.synthesized.io)
 ​
-[Synthesized.io](https://synthesized.io)
+**[Synthesized.io](https://synthesized.io)
 ​
-[Demo’s on Github](https://github.com/synthesized-io/tdk-demo)
+**[Demo’s on Github](https://github.com/synthesized-io/tdk-demo)
 ​
-Test your knowledge [**>>**](https://docs.google.com/forms/d/e/1FAIpQLSezW13M-ySxp7mDW2EC2a2pw169Jbjnu9TrVOeU7VkDE5DdYg/viewform)
+**Test your knowledge [**>>**](https://docs.google.com/forms/d/e/1FAIpQLSezW13M-ySxp7mDW2EC2a2pw169Jbjnu9TrVOeU7VkDE5DdYg/viewform)
 ​
-[TDK Quest](https://docs.synthesized.io/tdk-quest/)
+**[TDK Quest](https://docs.synthesized.io/tdk-quest/)
 ​
 ---
 ​
@@ -65,7 +65,7 @@ Test your knowledge [**>>**](https://docs.google.com/forms/d/e/1FAIpQLSezW13M-yS
 ​
 ## Demo configurations:
 ​
-## KEEP mode**. The following configuration copies database objects and data from the demo schema to the output database without masking:
+### KEEP mode**. The following configuration copies database objects and data from the demo schema to the output database without masking:
 ​
 ```yaml
 default_config:
@@ -76,7 +76,7 @@ schemas: ["public"]
 schema_creation_mode: DROP_AND_CREATE
 ```
 ​
-## GENERATION mode**. The following configuration learns data from the input schema `public` and generates a database twice the size (with `target_ratio: 2`), with similar distributions and automatically preserved referential integrity:
+### GENERATION mode**. The following configuration learns data from the input schema `public` and generates a database twice the size (with `target_ratio: 2`), with similar distributions and automatically preserved referential integrity:
 ​
 ```yaml
 default_config:
@@ -88,7 +88,7 @@ schema_creation_mode: DROP_AND_CREATE
 safety_mode: RELAXED
 ```
 ​
-## MASKING mode**. The following configuration creates a masked copy of the input schema `public`, automatically preserving referential integrity:
+### MASKING mode**. The following configuration creates a masked copy of the input schema `public`, automatically preserving referential integrity:
 ​
 ```yaml
 default_config:
@@ -100,7 +100,7 @@ schema_creation_mode: DROP_AND_CREATE
 safety_mode: RELAXED
 ```
 ​
-## GENERATION mode with subsetting**. 
+### GENERATION mode with subsetting**. 
 ​
 ```yaml
 default_config:
@@ -112,7 +112,7 @@ schema_creation_mode: DROP_AND_CREATE
 safety_mode: RELAXED
 ```
 ​
-## MASKING mode with subsetting**.
+### MASKING mode with subsetting**.
 ​
 ```yaml
 default_config:
@@ -124,7 +124,7 @@ schema_creation_mode: DROP_AND_CREATE
 safety_mode: RELAXED
 ```
 ​
-## SUBSETTING FOR SPECIFIC TABLES:**
+### SUBSETTING FOR SPECIFIC TABLES:**
 ​
 ```sql
 default_config:
@@ -143,7 +143,7 @@ schema_creation_mode: DROP_AND_CREATE
 safety_mode: RELAXED
 ```
 ​
-## GENERATION with MASKING and KEEP**. 
+### GENERATION with MASKING and KEEP**. 
 ​
 ```sql
 default_config:
@@ -167,7 +167,7 @@ schema_creation_mode: DROP_AND_CREATE
 safety_mode: RELAXED
 ```
 ​
-## Person Generator**.
+### Person Generator**.
 ​
 ```sql
 default_config:
@@ -189,7 +189,7 @@ schema_creation_mode: DROP_AND_CREATE
 safety_mode: RELAXED
 ```
 ​
-## Categorical Generator**. 
+### Categorical Generator**. 
 ​
 ```sql
 default_config:
@@ -217,7 +217,7 @@ schema_creation_mode: DROP_AND_CREATE
 safety_mode: RELAXED
 ```
 ​
-## Format Preserving Hashing.** 
+### Format Preserving Hashing.** 
 ​
 ```yaml
 default_config:
@@ -240,7 +240,7 @@ schema_creation_mode: DROP_AND_CREATE
 safety_mode: RELAXED
 ```
 ​
-## Passthrough**. 
+### Passthrough**. 
 ​
 ```yaml
 default_config:
@@ -260,7 +260,7 @@ schema_creation_mode: DROP_AND_CREATE
 safety_mode: RELAXED
 ```
 ​
-## Ignore tables:**
+### Ignore tables:**
 ​
 ```yaml
 default_config:
@@ -292,7 +292,7 @@ schema_creation_mode: DROP_AND_CREATE
 safety_mode: RELAXED
 ```
 ​
-## Data Filtering**. 
+### Data Filtering**. 
 ​
 ```yaml
 default_config:
@@ -308,7 +308,7 @@ schema_creation_mode: DROP_AND_CREATE
 safety_mode: RELAXED
 ```
 ​
-## Data Filtering Complex Example.** 
+### Data Filtering Complex Example.** 
 ​
 ```yaml
 default_config:
@@ -326,7 +326,7 @@ schema_creation_mode: DROP_AND_CREATE
 safety_mode: RELAXED
 ```
 ​
-## Filter by one user:**
+### Filter by one user:**
 ​
 ```yaml
 default_config:
