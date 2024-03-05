@@ -18,6 +18,12 @@ So, you've just taken the lead of the team, and during the first meeting, you're
 
 As the next step, in order to set up your workspace, please make sure the required software is installed on your computer. Here are the tools you will need:
 
+- [ ] Docker version = 24.0.6+
+- [ ] docker compose version = v2.23.0+
+- [ ] Your preferred IDE (we recommend installing the synthesised TDK plugin for autocomplete suggestions and config validation)
+- [ ] Your preferred database client such as: [DBeaver](https://dbeaver.io/download/), [psql](https://www.postgresql.org/docs/current/app-psql.html), [DataGrip](https://www.jetbrains.com/datagrip/), etc.
+
+If you still would like to verify that you have everything set up correctly, follow the following steps: 
 - Use your favorite command-line terminal, such as `Powershell`, `GitBash`, or `CMD` for Windows, or your preferred terminal for Linux or macOS. To verify it's working correctly, open your terminal and enter the command, replacing the `[YOUR_USERNAME]` placeholder with your name:
     
     ```bash
