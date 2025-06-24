@@ -83,7 +83,7 @@ The `output_source` database is your non-production database. This is the databa
 
 The default Synthesized configuration includes two data sources, `input` and `output`, that connect to these data sources. 
 
-To complete this task, you will need to see the contents of the two databases. Using your preferred database client, connect to the two databases using the details below. Please note that the databases are running inside the same docker container as Synthesized. This means that the connection details are slightly different locally and in Synthesized.
+To complete this task, you will need to see the contents of the two databases. Using your preferred database client, connect to the two databases using the details below. Please note that the databases are running inside the same docker container as Synthesized. This means that the connection details have different **hostnames** & **ports** when connecting locally vs when connecting through Synthesized.
 
 |  | Input | Output |
 |----------|-------|--------|
@@ -293,7 +293,7 @@ When you are happy, check your work by running:
    ```bash
     docker compose run check_challenge_3
    ```
-   
+
 Update the workflow configuration file and rerun the transformation and tests until you receive the `All is good` message in your terminal.
 
 ## Summing up the results
