@@ -1,0 +1,169 @@
+checks for category:
+  - row_count = 16:
+      name: 0 - The number of categories should not change
+
+checks for film_category:
+  - row_count = 2367:
+      name: 0 - The number of film categories should not change
+checks for language:
+  - row_count = 6:
+      name: 0 - The number of languages should not change
+
+checks for film_actor:
+  - row_count = 5462:
+      name: 0 - The number of film categories should not change
+
+checks for inventory:
+  - row_count = 4581:
+      name: 0 - The number of inventory items should not change
+
+checks for rental:
+  - row_count = 16044:
+      name: 0 - The number of rentals should not change
+
+checks for store:
+  - row_count = 500:
+      name: 0 - The number of stores should not change
+
+checks for actor:
+  - row_count = 200:
+      name: 0 - The number of actors should not change
+  - row_count = 1:
+      name: 1.1 - There is an unmasked actor - "PENELOPE GUINESS"
+      filter: first_name = 'PENELOPE' and last_name = 'GUINESS'
+  - row_count = 1:
+      name: 1.1 - There is an unmasked actor - "LUCILLE TRACY"
+      filter: first_name = 'LUCILLE' and last_name = 'TRACY'
+  - row_count = 1:
+      name: 1.1 - There is an unmasked actor - "WOODY HOFFMAN"
+      filter: first_name = 'WOODY' and last_name = 'HOFFMAN'
+
+checks for film:
+  - row_count = 1000:
+      name: 0 - The number of films should not change
+  - row_count = 1:
+      name: 1.1 - There is an unmasked film - "ARMAGEDDON LOST"
+      filter: title = 'ARMAGEDDON LOST' and description = 'A Fast-Paced Tale of a Boat And a Teacher who must Succumb a Composer in An Abandoned Mine Shaft'
+  - row_count = 1:
+      name: 1.1 - There is an unmasked film - "BOOGIE AMELIE"
+      filter: title = 'BOOGIE AMELIE' and description = 'A Lacklusture Character Study of a Husband And a Sumo Wrestler who must Succumb a Technical Writer in The Gulf of Mexico'
+  - row_count = 1:
+      name: 1.1 - There is an unmasked film - "CHOCOLAT HARRY"
+      filter: title = 'CHOCOLAT HARRY' and description = 'A Action-Packed Epistle of a Dentist And a Moose who must Meet a Mad Cow in Ancient Japan'
+
+checks for city:
+  - row_count = 600:
+      name: 0 - The number of cities should not change
+  - row_count = 1:
+      name: 1.2 - There is an unmasked city - "Kimchon"
+      filter: city = 'Kimchon'
+  - row_count = 1:
+      name: 1.2 - There is an unmasked city - "Newcastle"
+      filter: city = 'Newcastle'
+  - row_count = 1:
+      name: 1.2 - There is an unmasked city - "Salzburg"
+      filter: city = 'Salzburg'
+
+checks for country:
+  - row_count = 109:
+      name: 0 - The number of countries should not change
+  - row_count = 1:
+      name: 1.2 - There is an unmasked country - "Argentina"
+      filter: country = 'Argentina'
+  - row_count = 1:
+      name: 1.2 - There is an unmasked country - "Chad"
+      filter: country = 'Chad'
+  - row_count = 1:
+      name: 1.2 - There is an unmasked country - "Romania"
+      filter: country = 'Romania'
+
+checks for customer:
+  - row_count = 2995:
+      name: 2.1 - Generate five times as many records in the `customer` table
+  - invalid_count(email) = 0:
+      name: 0 - The generated customers should have sensible email addresses
+      valid format: email
+
+checks for payment:
+  - row_count = 32098:
+      name: 2.2 - Double the number of payment transactions
+
+checks for staff:
+  - row_count = 1800:
+      name: 2.3 - Increase the number of staff by 20%
+  - invalid_count(email) = 0:
+      name: 0 - The generated staff should have sensible email addresses
+      valid format: email
+  - row_count = 1:
+      name: 1.3 - Fake person "Shante Larkin" is among the staff members
+      filter: first_name = 'Shante' and last_name = 'Larkin'
+  - row_count = 1:
+      name: 1.3 - Fake person "Ambrose Kuphal" is among the staff members
+      filter: first_name = 'Ambrose' and last_name = 'Kuphal'
+  - row_count = 1:
+      name: 1.3 - Fake person "Rocco Schuster" is among the staff members
+      filter: first_name = 'Rocco' and last_name = 'Schuster'
+  - row_count = 1:
+      name: 2.3 - Fake person "Jame Schowalter" is among the staff members
+      filter: first_name = 'Jame' and last_name = 'Schowalter'
+  - row_count = 1:
+      name: 2.3 - Fake person "Andre Mertz" is among the staff members
+      filter: first_name = 'Andre' and last_name = 'Mertz'
+  - row_count = 1:
+      name: 2.3 - Fake person "Michale West" is among the staff members
+      filter: first_name = 'Michale' and last_name = 'West'
+  - row_count between 320 and 400:
+      name: 3a - Around 20% of staff members are inactive
+      filter: active = false
+  - row_count between 1400 and 1480:
+      name: 3a - Around 80% of staff members are active
+      filter: active = true
+
+checks for address:
+  - row_count = 603:
+      name: 0 - The number of addresses should not change
+  - row_count = 1:
+      name: 3b.1 - there is a hashed address "3421 Gnlia Fef"
+      filter: address = '3421 Gnlia Fef'
+  - row_count = 1:
+      name: 3b.1 - there is a hashed address "0267 Vzawkf Cxjjxzv"
+      filter: address = '0267 Vzawkf Cxjjxzv'
+  - row_count = 1:
+      name: 3b.1 - there is a hashed address "113 Oxmmlllem Retta"
+      filter: address = '113 Oxmmlllem Retta'
+  - row_count = 1:
+      name: 3b.2 - there is a hashed postal code "19574"
+      filter: postal_code = '19574'
+  - row_count = 1:
+      name: 3b.2 - there is a hashed postal code "7997"
+      filter: postal_code = '7997'
+  - row_count = 1:
+      name: 3b.2 - there is a hashed postal code "60390"
+      filter: postal_code = '60390'
+  - row_count = 1:
+      name: 3b.3 - the district hasn't been changed for "3421 Gnlia Fef"
+      filter: district = 'Nagasaki' and address = '3421 Gnlia Fef'
+  - row_count = 1:
+      name: 3b.3 - the district hasn't been changed for "0267 Vzawkf Cxjjxzv"
+      filter: district = 'Kanagawa' and address = '0267 Vzawkf Cxjjxzv'
+  - row_count = 1:
+      name: 3b.3 - the district hasn't been changed for "113 Oxmmlllem Retta"
+      filter: district = 'Liaoning' and address = '113 Oxmmlllem Retta'
+  - row_count = 1:
+      name: 3b.4 - there is a generated national phone number "028 7019 3315"
+      filter: phone = '028 7019 3315'
+  - row_count = 1:
+      name: 3b.4 - there is a generated national phone number "0121 470 0365"
+      filter: phone = '0121 470 0365'
+  - row_count = 1:
+      name: 3b.4 - there is a generated national phone number "01386 45139"
+      filter: phone = '01386 45139'
+  - row_count = 1:
+      name: 3b - all details are correct for "3421 Gnlia Fef"
+      filter: address = '3421 Gnlia Fef' and postal_code = '19574' and district = 'Nagasaki' and phone = '028 7019 3315'
+  - row_count = 1:
+      name: 3b - all details are correct for "1662 Leol Yaaid"
+      filter: address = '0267 Vzawkf Cxjjxzv' and postal_code = '7997' and district = 'Kanagawa' and phone = '0121 470 0365'
+  - row_count = 1:
+      name: 3b - all details are correct for "113 Oxmmlllem Retta"
+      filter: address = '113 Oxmmlllem Retta' and postal_code = '60390' and district = 'Liaoning' and phone = '01386 45139'

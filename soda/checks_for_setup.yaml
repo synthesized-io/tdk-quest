@@ -1,0 +1,109 @@
+checks for category:
+  - row_count = 16:
+      name: 0 - The number of categories should not change
+
+checks for film_category:
+  - row_count = 2367:
+      name: 0 - The number of film categories should not change
+checks for language:
+  - row_count = 6:
+      name: 0 - The number of languages should not change
+
+checks for film_actor:
+  - row_count = 5462:
+      name: 0 - The number of film categories should not change
+
+checks for inventory:
+  - row_count = 4581:
+      name: 0 - The number of inventory items should not change
+
+checks for payment:
+  - row_count = 16049:
+      name: 0 - The number of payment transactions should not change
+
+checks for rental:
+  - row_count = 16044:
+      name: 0 - The number of rentals should not change
+
+checks for store:
+  - row_count = 500:
+      name: 0 - The number of stores should not change
+
+checks for customer:
+  - row_count = 599:
+      name: 0 - The number of customers should not change
+  - invalid_count(email) = 0:
+      name: 0 - The generated customers should have sensible email addresses
+      valid format: email
+  - row_count = 1:
+      name: 0 - A customer has the masked first and last name - "OBZG GUAAW"
+      filter: first_name = 'OBZG' and last_name = 'GUAAW'
+  - row_count = 1:
+      name: 0 - A customer has the masked first and last name - "HKUYXYK XPFSAH"
+      filter: first_name = 'HKUYXYK' and last_name = 'XPFSAH'
+  - row_count = 1:
+      name: 0 - A customer has the masked first and last name - "RTIZ UAHI"
+      filter: first_name = 'RTIZ' and last_name = 'UAHI'
+
+checks for actor:
+  - row_count = 200:
+      name: 0 - The number of actors should not change
+  - row_count = 1:
+      name: 0 - There is a masked actor - "VDHHQMZF YYWLJGD"
+      filter: first_name = 'VDHHQMZF' and last_name = 'YYWLJGD'
+  - row_count = 1:
+      name: 0 - There is a masked actor - "KQPAOYS BLIAI"
+      filter: first_name = 'KQPAOYS' and last_name = 'BLIAI'
+  - row_count = 1:
+      name: 0 - There is a masked actor - "EEKGK PYYCFHD"
+      filter: first_name = 'EEKGK' and last_name = 'PYYCFHD'
+
+checks for film:
+  - row_count = 1000:
+      name: 0 - The number of films should not change
+  - row_count = 1:
+      name: 0 - There is a masked film - "KIIBIZIWGQ FKCA"
+      filter: title = 'KIIBIZIWGQ FKCA' and description = 'IMlm9o5_Cj9KV0khqi6RsadgRD4j9RuOTSWsl6WbOWLWHyKrONmnNHXrpgaqpDiCYLde8uriMQiZbqwZcU'
+  - row_count = 1:
+      name: 0 - There is a masked film - "BNBXIH SEVZQF"
+      filter: title = 'BNBXIH SEVZQF' and description = 'YexVfTJMDrO4dS_pFnwp0htcVRdCQb0bQhtGjiR56iPu4zKVHn1L0q5sONLR4w2rhSXcYGXMqxoMRuI3lcKQ8a2rf2RQ8JioKSGym3joubrLT141c'
+  - row_count = 1:
+      name: 0 - There is a masked film - "HOHPPMQT DIFIT"
+      filter: title = 'HOHPPMQT DIFIT' and description = 'CYF_HzkXaHJ3huRSgYSjSUQc6looDx7GxlWVpkb69KQzhb_8qj_8PJzZAMlt2PUycxQwggt3'
+
+checks for city:
+  - row_count = 600:
+      name: 0 - The number of cities should not change
+  - row_count = 1:
+      name: 0 - There is a masked city - "Ucpjeli"
+      filter: city = 'Ucpjeli'
+  - row_count = 1:
+      name: 0 - There is a masked city - "Kduqcxlqq"
+      filter: city = 'Kduqcxlqq'
+  - row_count = 1:
+      name: 0 - There is a masked city - "Cxmiundd"
+      filter: city = 'Cxmiundd'
+
+checks for country:
+  - row_count = 109:
+      name: 0 - The number of countries should not change
+  - row_count = 1:
+      name: 0 - There is a masked country - "Gpjyjnrof"
+      filter: country = 'Gpjyjnrof'
+  - row_count = 1:
+      name: 0 - There is a masked country - "Ikyo"
+      filter: country = 'Ikyo'
+  - row_count = 1:
+      name: 0 - There is a masked country - "Tbtspwj"
+      filter: country = 'Tbtspwj'
+
+checks for address:
+  - row_count = 603:
+      name: 0 - The number of addresses should not change
+
+checks for staff:
+  - row_count = 1500:
+      name: 0 - The number of staff should not change
+  - invalid_count(email) = 0:
+      name: 0 - Generated staff members should have sensible email addresses
+      valid format: email

@@ -1,96 +1,35 @@
-version: '3.5'
-
 services:
 
-  input_db:
-    container_name: input_db
-    image: synthesizedio/pagila:1.1
-    environment:
-      POSTGRES_USER: ${POSTGRES_USER:-postgres}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
-    ports: [ "13600:5432" ]
-    healthcheck:
-      test: "pg_isready -d postgres -q -U ${POSTGRES_USER:-postgres}"
-      interval: "3s"
-      timeout: "3s"
-      start_period: "3s"
-      retries: 30
-
-
-  output_db:
-    container_name: output_db
-    image: postgres:16
-    environment:
-      POSTGRES_USER: ${POSTGRES_USER:-postgres}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
-    ports: [ "13601:5432" ]
-    healthcheck:
-      test: "pg_isready -d postgres -q -U ${POSTGRES_USER:-postgres}"
-      interval: "3s"
-      timeout: "3s"
-      start_period: "3s"
-      retries: 30
-
-
-  databases:
-    container_name: databases
-    image: docker/whalesay
-    command: >
-      cowsay
-        "Both the source and target databases have been started on port 13600 and 13601 respectively, and are ready for TDK exercises!
-         Use the 'postgres' value as a database name, username and password for the both databases."
-    depends_on:
-      input_db:
-        condition: service_healthy
-      output_db:
-        condition: service_healthy
-
-
-  tdk:
-    container_name: tdk
-    image: synthesizedio/synthesized-tdk-cli:v1.40.0
-    environment:
-      SYNTHESIZED_INPUT_URL: jdbc:postgresql://input_db:5432/postgres
-      SYNTHESIZED_INPUT_USERNAME: postgres
-      SYNTHESIZED_INPUT_PASSWORD: postgres
-      SYNTHESIZED_OUTPUT_URL: jdbc:postgresql://output_db:5432/postgres
-      SYNTHESIZED_OUTPUT_USERNAME: postgres
-      SYNTHESIZED_OUTPUT_PASSWORD: postgres
-      SYNTHESIZED_USERCONFIG_FILE: /app/config.yaml
-      TDK_WORKINGDIRECTORY_PATH: /app/data
-      TDK_WORKINGDIRECTORY_ENABLED: "true"
-      JAVA_TOOL_OPTIONS: >
-        -Dlogging.level.io.synthesized.tdk.executor.lite.LiteTransformer=INFO
-        -Dlogging.level.io.synthesized.tdk=WARN
-        -Dlogging.level.com.zaxxer.hikari=WARN
-        -Dlogging.level.org.reflections=WARN
-        -Dlogging.level.org.jooq=WARN
-        -XX:+UseContainerSupport
-        -XX:MaxRAMPercentage=80.0
-        -Dspring.main.banner-mode=CONSOLE
-        -Dspring.banner.location=file:/app/banner.txt
-    volumes:
-      - ./${CONFIG_FILE:-config.tdk.yaml}:/app/config.yaml
-      - ./banner.txt:/app/banner.txt
-      - ./logback-lite-executor.xml:/app/logback-lite-executor.xml
-    depends_on:
-      databases:
-        condition: service_completed_successfully
-
-
-  check_masking:
-    container_name: check_masking
+  check_env_ready:
+    platform: linux/amd64
+    container_name: check_env_setup
     image: sodadata/soda-core
     command: scan -d output_db -c /root/.soda/configuration.yaml /root/.soda/checks.yaml
     volumes:
-      - ./soda/configuration.yaml:/root/.soda/configuration.yaml
+      - ./database_configuration.yaml:/root/.soda/configuration.yaml
+      - ./soda/checks_for_setup.yaml:/root/.soda/checks.yaml
+
+  check_challenge_1:
+    platform: linux/amd64
+    container_name: check_challenge_1
+    image: sodadata/soda-core
+    command: scan -d output_db -c /root/.soda/configuration.yaml /root/.soda/checks.yaml
+    volumes:
+      - ./database_configuration.yaml:/root/.soda/configuration.yaml
       - ./soda/checks_for_masking.yaml:/root/.soda/checks.yaml
 
-
-  check_generation:
-    container_name: check_generation
+  check_challenge_2:
+    container_name: check_challenge_2
     image: sodadata/soda-core
     command: scan -d output_db -c /root/.soda/configuration.yaml /root/.soda/checks.yaml
     volumes:
-      - ./soda/configuration.yaml:/root/.soda/configuration.yaml
+      - ./database_configuration.yaml:/root/.soda/configuration.yaml
       - ./soda/checks_for_generation.yaml:/root/.soda/checks.yaml
+
+  check_challenge_3:
+    container_name: check_challenge_3
+    image: sodadata/soda-core
+    command: scan -d output_db -c /root/.soda/configuration.yaml /root/.soda/checks.yaml
+    volumes:
+      - ./database_configuration.yaml:/root/.soda/configuration.yaml
+      - ./soda/checks_for_transformation.yaml:/root/.soda/checks.yaml      
