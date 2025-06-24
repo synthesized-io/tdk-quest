@@ -66,10 +66,10 @@ This project relies on the Synthesized TDK. You will need to run a Synthesized d
 
 You will need to download and unzip the latest version of governor-compose.zip and unzip it. Navigate to the unzipped directory and run:
 
-        ```bash
-        docker compose pull
-        docker compose up
-        ```
+   ```bash
+    docker compose pull
+    docker compose up
+   ```
 
 The UI will be available at (http://localhost:80). Use the predefined credentials to log in: `test@synthesized.io` / `Qq12345_`.
 
@@ -104,14 +104,14 @@ From the home page create a new workflow and name it whatever you like. Choose t
 
 When you have created the workflow, you will see it has added some default setup. Replace the workflow with the following config:
 
-    ```yaml
+   ```yaml
     default_config:
         mode: MASKING
 
     schema_creation_mode: DROP_AND_CREATE
     safety_mode: "RELAXED"
     global_seed: 42
-    ```
+   ```
 
 Note - `global_seed: 42` is used here to ensure that the random data you generate will match the tests. Make sure you include that line for the duration of this task otherwise the automatic validation will fail. 
 
@@ -121,18 +121,18 @@ Paste the example workflow config into the editor window and save. Once you have
 
 The Synthesized TDK Quest certification includes a set of commands to validate your test results. These can be found by downloading the git repository.
 
-    ```bash
+   ```bash
     git clone <https://github.com/synthesized-io/tdk-quest.git>
     cd tdk-quest
-    ```
+   ```
 
 The challenge validators work by connecting to your output database and checking the contents. It will connect to the database using the credentials stored in `database_configuration.yaml`. If you are running the Synthesized TDK using the default docker config, you won't need to change the `database_configuration.yaml`. If you are using a different database, fill in the details in that file.
 
 You can now validate that you have set everything up correctly by running the first validation command:
 
-    ```bash
+   ```bash
     docker compose run check_env_ready
-    ```
+   ```
 
 If your environment is prepared correctly, you should see:
 ![Valid setup](images/correct_setup.png)
@@ -187,9 +187,10 @@ Synthesized has three [transformation modes](https://docs.synthesized.io/tdk/lat
 To solve this challenge, you need to edit the Synthesized workflow so that the synthesized data meets all of the requirements. Make your edits, save, run the workflow, then check the database. 
 
 When you are sure that the data in the database has left the actor, film, city, and country data as it was, check your work by running:
-    ```bash
+
+   ```bash
     docker compose run check_challenge_1
-    ```
+   ```
 
 Note that this is `check_challenge_1`, rather than `check_setup`. 
 
@@ -219,9 +220,11 @@ You can set how much data to synthesize by using `target_ratio` (or `target_rows
 Once you have changed your workflow configuration, run the workflow and examine the results in the output database.
 
 When you are happy, check your work by running:
-    ```bash
+    
+   ```bash
     docker compose run check_challenge_2
-    ```
+   ```
+
 Update the workflow configuration file and rerun the transformation and tests until you receive the `All is good` message in your terminal.
 
 ## Challenge 3: Producing data to test our features
@@ -286,9 +289,11 @@ The [person generator](https://docs.synthesized.io/tdk/latest/user_guide/130_ref
 Once you have changed your workflow configuration, run the workflow and examine the results in the output database.
 
 When you are happy, check your work by running:
-    ```bash
+    
+   ```bash
     docker compose run check_challenge_3
-    ```
+   ```
+   
 Update the workflow configuration file and rerun the transformation and tests until you receive the `All is good` message in your terminal.
 
 ## Summing up the results
