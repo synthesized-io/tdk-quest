@@ -17,10 +17,6 @@ checks for inventory:
   - row_count = 4581:
       name: 0 - The number of inventory items should not change
 
-checks for payment:
-  - row_count = 16049:
-      name: 0 - The number of payment transactions should not change
-
 checks for rental:
   - row_count = 16044:
       name: 0 - The number of rentals should not change
@@ -28,22 +24,6 @@ checks for rental:
 checks for store:
   - row_count = 500:
       name: 0 - The number of stores should not change
-
-checks for customer:
-  - row_count = 599:
-      name: 0 - The number of customers should not change
-  - invalid_count(email) = 0:
-      name: 0 - The generated customers should have sensible email addresses
-      valid format: email
-  - row_count = 1:
-      name: 0 - A customer has the masked first and last name - "OBZG GUAAW"
-      filter: first_name = 'OBZG' and last_name = 'GUAAW'
-  - row_count = 1:
-      name: 0 - A customer has the masked first and last name - "HKUYXYK XPFSAH"
-      filter: first_name = 'HKUYXYK' and last_name = 'XPFSAH'
-  - row_count = 1:
-      name: 0 - A customer has the masked first and last name - "RTIZ UAHI"
-      filter: first_name = 'RTIZ' and last_name = 'UAHI'
 
 checks for actor:
   - row_count = 200:
@@ -97,6 +77,17 @@ checks for country:
       name: 1.2 - There is an unmasked country - "Romania"
       filter: country = 'Romania'
 
+checks for customer:
+  - row_count = 2995:
+      name: 2.1 - Generate five times as many records in the `customer` table
+  - invalid_count(email) = 0:
+      name: 0 - The generated customers should have sensible email addresses
+      valid format: email
+
+checks for payment:
+  - row_count = 32098:
+      name: 2.2 - Double the number of payment transactions
+
 checks for address:
   - row_count = 603:
       name: 0 - The number of addresses should not change
@@ -111,8 +102,8 @@ checks for address:
       filter: address = '432 Ilda Flat, Billyhaven, AR NK6 1ZS' and postal_code = 'C3 6RB'
 
 checks for staff:
-  - row_count = 1500:
-      name: 0 - The number of staff should not change
+  - row_count = 1800:
+      name: 2.3 - Increase the number of staff by 20%
   - invalid_count(email) = 0:
       name: 0 - Generated staff members should have sensible email addresses
       valid format: email

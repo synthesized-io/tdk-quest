@@ -64,7 +64,7 @@ In a recent team meeting, a decision was made to optimize the bug fixing and per
 
 This project relies on the Synthesized TDK. You will need to run a Synthesized demo environment by following the instructions in the [Synthesized User Guide](https://docs.synthesized.io/tdk/latest/user_guide/020_getting_started/installation).
 
-You will need to download and unzip the latest version of governor-compose.zip and unzip it. Navigate to the unzipped directory and run:
+You will need to download and unzip the latest version of governor-compose.zip and unzip it. **Navigate to the unzipped directory** and run:
 
    ```bash
     docker compose pull
@@ -105,12 +105,12 @@ From the home page create a new workflow and name it whatever you like. Choose t
 When you have created the workflow, you will see it has added some default setup. Replace the workflow with the following config:
 
    ```yaml
-    default_config:
-        mode: MASKING
+   default_config:
+      mode: MASKING
 
-    schema_creation_mode: DROP_AND_CREATE
-    safety_mode: "RELAXED"
-    global_seed: 42
+   schema_creation_mode: DROP_AND_CREATE
+   safety_mode: "RELAXED"
+   global_seed: 42
    ```
 
 Note - `global_seed: 42` is used here to ensure that the random data you generate will match the tests. Make sure you include that line for the duration of this task otherwise the automatic validation will fail. 
@@ -157,7 +157,7 @@ This is the error that is reported with the validator can access the database, b
 
 <details>
 <summary>Some of the tests are failing</summary>
-If some of the setup tests are failing, it means there's an issue in the workflow. Make sure to copy the workflow from the `Setup your first Workflow` section exactly.
+If some of the setup tests are failing, it means there's an issue in the workflow. Make sure to copy the workflow from the `Setup your first Workflow` section exactly, and remember to save!
 
 If you are missing the `mode: MASKING` setting, the system won't be generating the right masked data.
 
@@ -173,7 +173,9 @@ With the new non-production database, the team can start testing properly. It's 
 Luckily, with Synthesized you are in control of how data should be processed. After taking a look at the synthesized output, you set yourself a few requirements:
 
 **Requirement 1.1**: The `actor` and `film` data in the system is publicly available, and should not be masked. 
+
 **Requirement 1.2**: While location data is sensitive, the `city` and `country` data in the system is not confidential and should remain as is. 
+
 **Requirement 1.3**: The `address` and `staff` data in the system are sensitive. We should use `GENERATE` mode to make the data more realistic. 
 
 <details>
@@ -205,7 +207,9 @@ It's crucial to ensure that all your systems can successfully handle the anticip
 Use the workflow configuration file you created in the first challenge as a starting point, and make changes to meet the following requirements:
 
 **Requirement 2.1**: Generate five times as many records in the `customer` table
-**Requirement 2.2**: Double the number of payment transactions by creating new records in the `customer` table
+
+**Requirement 2.2**: Double the number of payment transactions by creating new records in the `payment` table
+
 **Requirement 2.3**: Increase the staff count by 20% by generating new records in the `staff` table
 
 <details>
