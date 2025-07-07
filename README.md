@@ -316,8 +316,6 @@ Additionally, we recommend joining our social media, where you can find more use
 - [Linkedin](https://www.linkedin.com/company/synthesized)
 - [Medium](https://synthesized.medium.com/)
 
-And finally, we ask you to fill in [a little questionnaire](https://docs.google.com/forms/d/e/1FAIpQLSdawUD6p1ld-brgG6vVJPOgGA_-yc4NPJko_rcmFHHIE19O7A/viewform?usp=sharing) that will help us become even better and solve our customers' problems even more effectively.
-
 Thank you for your attention and support. Let's stay in touch.
 
 Synthesized TDK Team
