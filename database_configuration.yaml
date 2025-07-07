@@ -1,0 +1,9 @@
+data_source output_db:
+  type: postgres
+  connection:
+    host: host.docker.internal
+    port: 5433
+    username: apiuser
+    password: apipassword
+  database: output_source
+  schema: public

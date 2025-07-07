@@ -1,69 +1,127 @@
 checks for category:
-  - row_count = 16
+  - row_count = 16:
+      name: 0 - The number of categories should not change
 
 checks for film_category:
-  - row_count = 2367
-
+  - row_count = 2367:
+      name: 0 - The number of film categories should not change
 checks for language:
-  - row_count = 6
+  - row_count = 6:
+      name: 0 - The number of languages should not change
 
 checks for film_actor:
-  - row_count = 5462
+  - row_count = 5462:
+      name: 0 - The number of film categories should not change
 
 checks for inventory:
-  - row_count = 4581
+  - row_count = 4581:
+      name: 0 - The number of inventory items should not change
 
 checks for payment:
-  - row_count = 48147
+  - row_count = 16049:
+      name: 0 - The number of payment transactions should not change
 
 checks for rental:
-  - row_count = 16044
+  - row_count = 16044:
+      name: 0 - The number of rentals should not change
 
 checks for store:
-  - row_count = 500
-
-checks for address:
-  - row_count = 603
-  - row_count = 1:
-      name: there is an unmasked address - "018 Silas Mountain, New Vinceberg, MA TD6P 9XL"
-      filter: address = '018 Silas Mountain, New Vinceberg, MA TD6P 9XL' and postal_code = 'LH6 2NJ'
-
-checks for actor:
-  - row_count = 200
-  - row_count = 1:
-      name: there is an actor with the real, unmasked name - "PENELOPE GUINESS"
-      filter: first_name = 'PENELOPE' and last_name = 'GUINESS'
+  - row_count = 500:
+      name: 0 - The number of stores should not change
 
 checks for customer:
-  - row_count = 599
+  - row_count = 599:
+      name: 0 - The number of customers should not change
   - invalid_count(email) = 0:
+      name: 0 - The generated customers should have sensible email addresses
       valid format: email
   - row_count = 1:
-      name: a customer has a masked first and last name - "BBAY YKQUU"
-      filter: first_name = 'BBAY' and last_name = 'YKQUU'
+      name: 0 - A customer has the masked first and last name - "OBZG GUAAW"
+      filter: first_name = 'OBZG' and last_name = 'GUAAW'
+  - row_count = 1:
+      name: 0 - A customer has the masked first and last name - "HKUYXYK XPFSAH"
+      filter: first_name = 'HKUYXYK' and last_name = 'XPFSAH'
+  - row_count = 1:
+      name: 0 - A customer has the masked first and last name - "RTIZ UAHI"
+      filter: first_name = 'RTIZ' and last_name = 'UAHI'
 
-checks for staff:
-  - row_count = 1500
-  - invalid_count(email) = 0:
-      valid format: email
+checks for actor:
+  - row_count = 200:
+      name: 0 - The number of actors should not change
   - row_count = 1:
-      name: fake person "Jeffry Parker" is among the staff members
-      filter: first_name = 'Jeffry' and last_name = 'Parker'
+      name: 1.1 - There is an unmasked actor - "PENELOPE GUINESS"
+      filter: first_name = 'PENELOPE' and last_name = 'GUINESS'
+  - row_count = 1:
+      name: 1.1 - There is an unmasked actor - "LUCILLE TRACY"
+      filter: first_name = 'LUCILLE' and last_name = 'TRACY'
+  - row_count = 1:
+      name: 1.1 - There is an unmasked actor - "WOODY HOFFMAN"
+      filter: first_name = 'WOODY' and last_name = 'HOFFMAN'
 
 checks for film:
-  - row_count = 1000
+  - row_count = 1000:
+      name: 0 - The number of films should not change
   - row_count = 1:
-      name: there is an unmasked film - "CALIFORNIA BIRDS"
-      filter: title = 'CALIFORNIA BIRDS'
-
-checks for country:
-  - row_count = 109
+      name: 1.1 - There is an unmasked film - "ARMAGEDDON LOST"
+      filter: title = 'ARMAGEDDON LOST' and description = 'A Fast-Paced Tale of a Boat And a Teacher who must Succumb a Composer in An Abandoned Mine Shaft'
   - row_count = 1:
-      name: there is an unmasked country - "Argentina"
-      filter: country = 'Argentina'
+      name: 1.1 - There is an unmasked film - "BOOGIE AMELIE"
+      filter: title = 'BOOGIE AMELIE' and description = 'A Lacklusture Character Study of a Husband And a Sumo Wrestler who must Succumb a Technical Writer in The Gulf of Mexico'
+  - row_count = 1:
+      name: 1.1 - There is an unmasked film - "CHOCOLAT HARRY"
+      filter: title = 'CHOCOLAT HARRY' and description = 'A Action-Packed Epistle of a Dentist And a Moose who must Meet a Mad Cow in Ancient Japan'
 
 checks for city:
-  - row_count = 600
+  - row_count = 600:
+      name: 0 - The number of cities should not change
   - row_count = 1:
-      name: there is an unmasked city - "Kimchon"
+      name: 1.2 - There is an unmasked city - "Kimchon"
       filter: city = 'Kimchon'
+  - row_count = 1:
+      name: 1.2 - There is an unmasked city - "Newcastle"
+      filter: city = 'Newcastle'
+  - row_count = 1:
+      name: 1.2 - There is an unmasked city - "Salzburg"
+      filter: city = 'Salzburg'
+
+checks for country:
+  - row_count = 109:
+      name: 0 - The number of countries should not change
+  - row_count = 1:
+      name: 1.2 - There is an unmasked country - "Argentina"
+      filter: country = 'Argentina'
+  - row_count = 1:
+      name: 1.2 - There is an unmasked country - "Chad"
+      filter: country = 'Chad'
+  - row_count = 1:
+      name: 1.2 - There is an unmasked country - "Romania"
+      filter: country = 'Romania'
+
+checks for address:
+  - row_count = 603:
+      name: 0 - The number of addresses should not change
+  - row_count = 1:
+      name: 1.3 - There is a synthetic address - "296 Ross Key, Batzburgh, OH YG3 5ZP"
+      filter: address = '296 Ross Key, Batzburgh, OH YG3 5ZP' and postal_code = 'GO96 6XD'
+  - row_count = 1:
+      name: 1.3 - There is a synthetic address - "664 Len Cape, Hillsfort, GA T8A 6EB"
+      filter: address = '664 Len Cape, Hillsfort, GA T8A 6EB' and postal_code = 'W9B 8TG'
+  - row_count = 1:
+      name: 1.3 - There is a synthetic address - "432 Ilda Flat, Billyhaven, AR NK6 1ZS"
+      filter: address = '432 Ilda Flat, Billyhaven, AR NK6 1ZS' and postal_code = 'C3 6RB'
+
+checks for staff:
+  - row_count = 1500:
+      name: 0 - The number of staff should not change
+  - invalid_count(email) = 0:
+      name: 0 - Generated staff members should have sensible email addresses
+      valid format: email
+  - row_count = 1:
+      name: 1.3 - Fake person "Shante Larkin" is among the staff members
+      filter: first_name = 'Shante' and last_name = 'Larkin'
+  - row_count = 1:
+      name: 1.3 - Fake person "Ambrose Kuphal" is among the staff members
+      filter: first_name = 'Ambrose' and last_name = 'Kuphal'
+  - row_count = 1:
+      name: 1.3 - Fake person "Rocco Schuster" is among the staff members
+      filter: first_name = 'Rocco' and last_name = 'Schuster'
