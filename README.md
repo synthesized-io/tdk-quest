@@ -115,7 +115,7 @@ When you have created the workflow, you will see it has added some default setup
 
 Note - `global_seed: 42` is used here to ensure that the random data you generate will match the tests. Make sure you include that line for the duration of this task otherwise the automatic validation will fail. 
 
-Paste the example workflow config into the editor window and save. Once you have saved, run the workflow against the `output` data source. This will mask all of the data in the input database and use it to populate the 
+Paste the example workflow config into the editor window and save. Once you have saved, run the workflow against the `output` data source. This will mask all of the data in the input database and use it to populate the output database.
 
 ### Validating Challenge 0
 
@@ -166,6 +166,10 @@ If you are missing the `global_seed: 42` setting, the system could be masking da
 
 When the tests pass, congratulations! You have successfully set up the team's new non-production database.
 
+## Challenge Expectations
+
+It is important to mention that throughout all the challenges, only 1 config file should be produced. Each challenge you complete should build up that config file so by the last challenge you have a file that passes all validations.
+
 ## Challenge 1: Masking the right data
 
 With the new non-production database, the team can start testing properly. It's great that it doesn't include any personal data, but the team start commenting that some data doesn't look the way they expect it to. 
@@ -181,7 +185,7 @@ Luckily, with Synthesized you are in control of how data should be processed. Af
 <details>
 <summary>Hints</summary>
 
-Synthesized has three [transformation modes](https://docs.synthesized.io/tdk/latest/user_guide/130_reference/configuration_reference#UserTransformationMode): `MASKING`, `GENERATION`, and `KEEP`. 
+Synthesized has three [transformation modes](https://docs.synthesized.io/tdk/latest/user_guide/130_reference/configuration_reference#UserTransformationMode): `MASKING`, `GENERATION`, and `KEEP`. Note that no custom transformers are required at this point.
 </details>
 
 ### Validating Challenge 1
