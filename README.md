@@ -62,7 +62,7 @@ In a recent team meeting, a decision was made to optimize the bug fixing and per
 
 ### Run the Synthesized TDK Demo Environment
 
-This project relies on the Synthesized TDK. You will need to run a Synthesized demo environment by following the instructions in the [Synthesized User Guide](https://docs.synthesized.io/tdk/latest/user_guide/020_getting_started/installation).
+This project relies on the Synthesized TDK. You will need to run a Synthesized demo environment by following the instructions in the [Synthesized User Guide](https://docs.synthesized.io/tdk/latest/user_guide/010_get_started/quickstart).
 
 You will need to download and unzip the latest version of governor-compose.zip and unzip it. **Navigate to the unzipped directory** and run:
 
@@ -96,9 +96,9 @@ Once you have connected to the databases, take a look at the structure of the di
 
 ### Setup your first Workflow
 
-To populate the non-production database, you're going to use Synthesized's TDK. 
+To populate the non-production database, you're going to use the Synthesized platform. 
 
-If you're not yet familiar with Synthesized TDK, you should learn about it by visiting the "[What is TDK?](https://docs.synthesized.io/tdk/latest/user_guide/getting_started/what_is_tdk)" page in the official documentation, then reading about [Masking](https://docs.synthesized.io/tdk/latest/user_guide/030_masking_your_data/masking). 
+If you're not yet familiar with the Synthesized platform, you should learn about it by visiting the "[What is Synthesized?](https://docs.synthesized.io/tdk/latest/user_guide/010_get_started/welcome)" page in the official documentation, then reading about [Masking](https://docs.synthesized.io/tdk/latest/user_guide/020_guides/masking_data/). 
 
 From the home page create a new workflow and name it whatever you like. Choose to create an empty workflow. You will be prompted to select data sources, which should be automatically filled in as `input` and `output`. These are predefined data sources that connect to the demo database. 
 
@@ -185,7 +185,7 @@ Luckily, with Synthesized you are in control of how data should be processed. Af
 <details>
 <summary>Hints</summary>
 
-Synthesized has three [transformation modes](https://docs.synthesized.io/tdk/latest/user_guide/130_reference/configuration_reference#UserTransformationMode): `MASKING`, `GENERATION`, and `KEEP`. Note that no custom transformers are required at this point.
+Synthesized has three [transformation modes](https://docs.synthesized.io/tdk/latest/user_guide/040_reference/transformers/): `MASKING`, `GENERATION`, and `KEEP`. Note that no custom transformers are required at this point.
 </details>
 
 ### Validating Challenge 1
@@ -243,7 +243,7 @@ The team is hard at work building new features. They are focused on two key proj
 
 To ensure these features are working properly, we want to test these use cases against realistic data. However, the current production data doesn't have enough information for us to run these tests. Thankfully, Synthesized allows you to generate data that meets the requirements for the two projects. 
 
-To generate realistic data here you will need to use the [categorical generator](https://docs.synthesized.io/tdk/latest/user_guide/130_reference/transformations#CategoricalGeneratorParams), [format preserving hashing generator](https://docs.synthesized.io/tdk/latest/user_guide/130_reference/transformations#FormatPreservingHashingParams), and the [person generator](https://docs.synthesized.io/tdk/latest/user_guide/130_reference/transformations#PersonGeneratorParams). 
+To generate realistic data here you will need to use the [categorical generator](https://docs.synthesized.io/tdk/latest/user_guide/040_reference/transformers/transformations#CategoricalGeneratorParams), [format preserving hashing generator](https://docs.synthesized.io/tdk/latest/user_guide/040_reference/transformers/transformations#FormatPreservingHashingParams), and the [person generator](https://docs.synthesized.io/tdk/latest/user_guide/040_reference/transformers/transformations#PersonGeneratorParams). 
 
 ### Challenge 3a - Recording staff activity
 Until now, when staff members have left the company, they were deleted from the database. The company has decided to change the system so that instead of deleting staff, they will be marked as inactive instead. They keep track of this by setting the `public.staff.active` column to false. Currently, all of our production data is for active staff members, but we need test data that includes inactive staff.
@@ -252,7 +252,7 @@ Until now, when staff members have left the company, they were deleted from the 
 <details>
 <summary>Hints</summary>
 
-The [categorical generator](https://docs.synthesized.io/tdk/latest/user_guide/130_reference/transformations#CategoricalGeneratorParams) can be used to generate values that automatically match the existing data, or you can use it to provide possible values and it will generate data that matches.
+The [categorical generator](https://docs.synthesized.io/tdk/latest/user_guide/040_reference/transformers/transformations#CategoricalGeneratorParams) can be used to generate values that automatically match the existing data, or you can use it to provide possible values and it will generate data that matches.
 
 </details>
 
@@ -267,7 +267,7 @@ To get the most realistic data, we need a few things:
 <details>
 <summary>Hints</summary>
 
-If you select `MASKING` mode, [format preserving hashing](https://docs.synthesized.io/tdk/latest/user_guide/130_reference/transformations#FormatPreservingHashingParams) is selected automatically for certain columns.
+If you select `MASKING` mode, [format preserving hashing](https://docs.synthesized.io/tdk/latest/user_guide/040_reference/transformers/transformations#FormatPreservingHashingParams) is selected automatically for certain columns.
 
 </details>
 
@@ -275,7 +275,7 @@ If you select `MASKING` mode, [format preserving hashing](https://docs.synthesiz
 <details>
 <summary>Hints</summary>
 
-The [format preserving hashing generator](https://docs.synthesized.io/tdk/latest/user_guide/130_reference/transformations#FormatPreservingHashingParams) can be used to maintain the structure of the input data.
+The [format preserving hashing generator](https://docs.synthesized.io/tdk/latest/user_guide/040_reference/transformers/transformations#FormatPreservingHashingParams) can be used to maintain the structure of the input data.
 </details>
 
 **Requirement 3b.3**: District isn't personally identifiable information, so let's keep the values from the source data 
@@ -289,7 +289,7 @@ Transformation modes (`MASKING`, `GENERATION`, & `KEEP`) can be set at the colum
 <details>
 <summary>Hints</summary>
 
-The [person generator](https://docs.synthesized.io/tdk/latest/user_guide/130_reference/transformations#PersonGeneratorParams) can be used to generate all sorts of information that could be associated with a person. 
+The [person generator](https://docs.synthesized.io/tdk/latest/user_guide/040_reference/transformers/transformations#PersonGeneratorParams) can be used to generate all sorts of information that could be associated with a person. 
 </details>
 
 ### Validating Challenge 3
