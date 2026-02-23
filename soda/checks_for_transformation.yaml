@@ -95,23 +95,23 @@ checks for staff:
       name: 0 - The generated staff should have sensible email addresses
       valid format: email
   - row_count = 1:
-      name: 1.3 - Fake person "Shante Larkin" is among the staff members
-      filter: first_name = 'Shante' and last_name = 'Larkin'
+      name: 1.3 - Fake person "Jude Steuber" is among the staff members
+      filter: first_name = 'Jude' and last_name = 'Steuber'
   - row_count = 1:
-      name: 1.3 - Fake person "Ambrose Kuphal" is among the staff members
-      filter: first_name = 'Ambrose' and last_name = 'Kuphal'
+      name: 1.3 - Fake person "Shu Little" is among the staff members
+      filter: first_name = 'Shu' and last_name = 'Little'
   - row_count = 1:
-      name: 1.3 - Fake person "Rocco Schuster" is among the staff members
-      filter: first_name = 'Rocco' and last_name = 'Schuster'
+      name: 1.3 - Fake person "Karyl Abernathy" is among the staff members
+      filter: first_name = 'Karyl' and last_name = 'Abernathy'
   - row_count = 1:
-      name: 2.3 - Fake person "Jame Schowalter" is among the staff members
-      filter: first_name = 'Jame' and last_name = 'Schowalter'
+      name: 2.3 - Fake person "Blaine Rowe" is among the staff members
+      filter: first_name = 'Blaine' and last_name = 'Rowe'
   - row_count = 1:
-      name: 2.3 - Fake person "Andre Mertz" is among the staff members
-      filter: first_name = 'Andre' and last_name = 'Mertz'
+      name: 2.3 - Fake person "Aleida Grimes" is among the staff members
+      filter: first_name = 'Aleida' and last_name = 'Grimes'
   - row_count = 1:
-      name: 2.3 - Fake person "Michale West" is among the staff members
-      filter: first_name = 'Michale' and last_name = 'West'
+      name: 2.3 - Fake person "Tyson Bins" is among the staff members
+      filter: first_name = 'Tyson' and last_name = 'Bins'
   - row_count between 320 and 400:
       name: 3a - Around 20% of staff members are inactive
       filter: active = false
@@ -150,20 +150,20 @@ checks for address:
       name: 3b.3 - the district hasn't been changed for "113 Oxmmlllem Retta"
       filter: district = 'Liaoning' and address = '113 Oxmmlllem Retta'
   - row_count = 1:
-      name: 3b.4 - there is a generated national phone number "028 7019 3315"
-      filter: phone = '028 7019 3315'
+      name: 3b.4 - there is a generated national phone number "029 1413 8443"
+      filter: phone = '029 1413 8443'
   - row_count = 1:
-      name: 3b.4 - there is a generated national phone number "0121 470 0365"
-      filter: phone = '0121 470 0365'
+      name: 3b.4 - there is a generated national phone number "028 2756 2359"
+      filter: phone = '028 2756 2359'
   - row_count = 1:
-      name: 3b.4 - there is a generated national phone number "01386 45139"
-      filter: phone = '01386 45139'
+      name: 3b.4 - there is a generated national phone number "01698 340573"
+      filter: phone = '01698 340573'
   - row_count = 1:
       name: 3b - all details are correct for "3421 Gnlia Fef"
-      filter: address = '3421 Gnlia Fef' and postal_code = '19574' and district = 'Nagasaki' and phone = '028 7019 3315'
+      filter: address = '3421 Gnlia Fef' and postal_code = '19574' and district = 'Nagasaki' and phone = '029 1413 8443'
   - row_count = 1:
-      name: 3b - all details are correct for "1662 Leol Yaaid"
-      filter: address = '0267 Vzawkf Cxjjxzv' and postal_code = '7997' and district = 'Kanagawa' and phone = '0121 470 0365'
+      name: 3b - all details are correct for "0267 Vzawkf Cxjjxzv"
+      filter: address = '0267 Vzawkf Cxjjxzv' and postal_code = '7997' and district = 'Kanagawa' and phone = '028 2756 2359'
   - row_count = 1:
       name: 3b - all details are correct for "113 Oxmmlllem Retta"
-      filter: address = '113 Oxmmlllem Retta' and postal_code = '60390' and district = 'Liaoning' and phone = '01386 45139'
+      filter: address = '113 Oxmmlllem Retta' and postal_code = '60390' and district = 'Liaoning' and phone = '01698 340573'
