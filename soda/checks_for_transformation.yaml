@@ -95,23 +95,23 @@ checks for staff:
       name: 0 - The generated staff should have sensible email addresses
       valid format: email
   - row_count = 1:
-      name: 1.3 - Fake person "Jude Steuber" is among the staff members
-      filter: first_name = 'Jude' and last_name = 'Steuber'
+      name: 1.3 - Fake person "Lina Larkin" is among the staff members
+      filter: first_name = 'Lina' and last_name = 'Larkin'
   - row_count = 1:
-      name: 1.3 - Fake person "Shu Little" is among the staff members
-      filter: first_name = 'Shu' and last_name = 'Little'
+      name: 1.3 - Fake person "Noah Batz" is among the staff members
+      filter: first_name = 'Noah' and last_name = 'Batz'
   - row_count = 1:
-      name: 1.3 - Fake person "Karyl Abernathy" is among the staff members
-      filter: first_name = 'Karyl' and last_name = 'Abernathy'
+      name: 1.3 - Fake person "Royal Paucek" is among the staff members
+      filter: first_name = 'Royal' and last_name = 'Paucek'
   - row_count = 1:
-      name: 2.3 - Fake person "Blaine Rowe" is among the staff members
-      filter: first_name = 'Blaine' and last_name = 'Rowe'
+      name: 2.3 - Fake person "Bernardine Stiedemann"" is among the staff members
+      filter: first_name = 'Bernardine' and last_name = 'Stiedemann'
   - row_count = 1:
-      name: 2.3 - Fake person "Aleida Grimes" is among the staff members
-      filter: first_name = 'Aleida' and last_name = 'Grimes'
+      name: 2.3 - Fake person "Latonia Lemke" is among the staff members
+      filter: first_name = 'Latonia' and last_name = 'Lemke'
   - row_count = 1:
-      name: 2.3 - Fake person "Tyson Bins" is among the staff members
-      filter: first_name = 'Tyson' and last_name = 'Bins'
+      name: 2.3 - Fake person "Irvin Donnelly" is among the staff members
+      filter: first_name = 'Irvin' and last_name = 'Donnelly'
   - row_count between 320 and 400:
       name: 3a - Around 20% of staff members are inactive
       filter: active = false
