@@ -180,12 +180,22 @@ Luckily, with Synthesized you are in control of how data should be processed. Af
 
 **Requirement 1.2**: While location data is sensitive, the `city` and `country` data in the system is not confidential and should remain as is. 
 
-**Requirement 1.3**: The `address` and `staff` data in the system are sensitive. We should use `GENERATE` mode to make the data more realistic. 
+**Requirement 1.3**: The `address` and `staff` data in the system are sensitive. We should use `GENERATION` mode to make the data more realistic. 
 
 <details>
 <summary>Hints</summary>
 
 Synthesized has three [transformation modes](https://docs.synthesized.io/tdk/latest/user_guide/040_reference/transformers/): `MASKING`, `GENERATION`, and `KEEP`. Note that no custom transformers are required at this point.
+
+To treat a table differently from the workflow default, add a `tables:` section. It is a **list** — one entry per table you want to override, each naming the table and the setting to apply:
+
+```yaml
+tables:
+  - table_name_with_schema: "public.example_table"
+    mode: KEEP
+```
+
+Tables you don't list keep the `default_config` mode you set in Challenge 0.
 </details>
 
 ### Validating Challenge 1
@@ -219,7 +229,7 @@ Use the workflow configuration file you created in the first challenge as a star
 <details>
 <summary>Hints</summary>
 
-You can set how much data to synthesize by using `target_ratio` (or `target_rows`). You can produce any number of rows in `GENERATE` mode. In `MASKING` mode or `KEEP` mode you can't generate more rows than the input data. 
+You can set how much data to synthesize by using `target_ratio` (or `target_rows`). You can produce any number of rows in `GENERATION` mode. In `MASKING` mode or `KEEP` mode you can't generate more rows than the input data. 
 
 </details>
 
