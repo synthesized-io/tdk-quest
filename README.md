@@ -170,6 +170,10 @@ When the tests pass, congratulations! You have successfully set up the team's ne
 
 It is important to mention that throughout all the challenges, only 1 config file should be produced. Each challenge you complete should build up that config file so by the last challenge you have a file that passes all validations.
 
+**That config file is what you submit.** When you have finished, attach it to the Synthesized Quest assignment in the Partner Academy — the `.yaml` on its own, or zipped, either is fine. Attach it as a file rather than pasting its contents into the text box: the box strips indentation, which leaves the YAML unreadable.
+
+Screenshots of the validators passing are not needed. We re-run your config against a clean database ourselves, so the config is the only thing we can grade.
+
 ## Challenge 1: Masking the right data
 
 With the new non-production database, the team can start testing properly. It's great that it doesn't include any personal data, but the team start commenting that some data doesn't look the way they expect it to. 
@@ -315,6 +319,8 @@ When you are happy, check your work by running:
 Update the workflow configuration file and rerun the transformation and tests until you receive the `All is good` message in your terminal.
 
 ## Summing up the results
+
+**Before you finish: submit your config file.** Attach the single `.yaml` you have built up to the Synthesized Quest assignment in the Partner Academy, as a file rather than pasted text. That config is what gets graded.
 
 Congratulations! If you've reached this point, it implies that:
 
