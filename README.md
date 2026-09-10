@@ -172,6 +172,8 @@ It is important to mention that throughout all the challenges, only 1 config fil
 
 **That config file is what you submit.** When you have finished, attach it to the Synthesized Quest assignment in the Partner Academy — the `.yaml` on its own, or zipped, either is fine. Attach it as a file rather than pasting its contents into the text box: the box strips indentation, which leaves the YAML unreadable.
 
+**Send one config, not one per challenge.** If you kept a separate file as you went — `challenge_01.yaml`, `challenge_02.yaml` and so on — send only the last one, the cumulative version that passes every validation. We do not guess which of several files is your submission, so an archive holding more than one config cannot be graded.
+
 Screenshots of the validators passing are not needed. We re-run your config against a clean database ourselves, so the config is the only thing we can grade.
 
 ## Challenge 1: Masking the right data
@@ -320,7 +322,7 @@ Update the workflow configuration file and rerun the transformation and tests un
 
 ## Summing up the results
 
-**Before you finish: submit your config file.** Attach the single `.yaml` you have built up to the Synthesized Quest assignment in the Partner Academy, as a file rather than pasted text. That config is what gets graded.
+**Before you finish: submit your config file.** Attach the single `.yaml` you have built up to the Synthesized Quest assignment in the Partner Academy, as a file rather than pasted text. That config is what gets graded. If you kept one file per challenge, send only the final one — an archive with several configs in it cannot be graded, because we will not guess which you meant.
 
 Congratulations! If you've reached this point, it implies that:
 
